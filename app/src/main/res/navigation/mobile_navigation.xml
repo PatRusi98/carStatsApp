@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_tankovanie">
+
+    <fragment
+        android:id="@+id/nav_tankovanie"
+        android:name="com.rusinak.carstat.ui.tankovanie.TankovanieFragment"
+        android:label="@string/menu_tankovanie"
+        tools:layout="@layout/fragment_tankovanie" />
+
+    <fragment
+        android:id="@+id/nav_udzba"
+        android:name="com.rusinak.carstat.ui.udrzba.UdrzbaFragment"
+        android:label="@string/menu_udrzba"
+        tools:layout="@layout/fragment_udrzba" />
+
+    <fragment
+        android:id="@+id/nav_stk"
+        android:name="com.rusinak.carstat.ui.stk.STKFragment"
+        android:label="@string/menu_stk"
+        tools:layout="@layout/fragment_stk" />
+
+    <fragment
+        android:id="@+id/nav_opravy"
+        android:name="com.rusinak.carstat.ui.opravy.OpravyFragment"
+        android:label="@string/menu_opravy"
+        tools:layout="@layout/fragment_opravy" />
+
+    <fragment
+        android:id="@+id/nav_jazdy"
+        android:name="com.rusinak.carstat.ui.jazdy.JazdyFragment"
+        android:label="@string/menu_jazdy"
+        tools:layout="@layout/fragment_jazdy" />
+
+    <fragment
+        android:id="@+id/nav_statistiky"
+        android:name="com.rusinak.carstat.ui.statistiky.StatistikyFragment"
+        android:label="@string/menu_statistiky"
+        tools:layout="@layout/fragment_statistiky" />
+
+    <fragment
+        android:id="@+id/nav_dashboard"
+        android:name="com.rusinak.carstat.ui.dashboard.DashboardFragment"
+        android:label="@string/menu_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/nav_nastavenia"
+        android:name="com.rusinak.carstat.ui.nastavenia.NastaveniaFragment"
+        android:label="@string/menu_nastavenia"
+        tools:layout="@layout/fragment_nastavenia" />
+
+</navigation>

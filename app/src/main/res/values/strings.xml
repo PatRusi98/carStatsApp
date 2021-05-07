@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">CarStat</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Dacia Logan</string>
+    <string name="nav_header_subtitle">1.4 55kW</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tankovanie">Tankovanie</string>
+    <string name="menu_udrzba">Údržba</string>
+    <string name="menu_stk">STK</string>
+    <string name="menu_opravy">Opravy</string>
+    <string name="menu_jazdy">Jazdy</string>
+    <string name="menu_statistiky">Štatistiky</string>
+    <string name="menu_dashboard">Dashboard</string>
+    <string name="menu_nastavenia">Nastavenia</string>
+    <string-array name="palivo">
+        <item>Natural 95</item>
+        <item>Natural 98</item>
+        <item>Natural 100</item>
+        <item>Natural 101</item>
+        <item>Natural 102</item>
+        <item>Elektrika</item>
+        <item>Diesel</item>
+        <item>Ad Blue</item>
+        <item>LPG</item>
+        <item>CNG</item>
+        <item>iné</item>
+    </string-array>
+    >
+    <string-array name="stk">
+        <item>Technická kontrola</item>
+        <item>Emisná kontrola</item>
+        <item>Kontrola Originality</item>
+    </string-array>
+    <string-array name="udrzba">
+        <item>Výmena oleja a filtrov</item>
+        <item>Prezúvanie pneumatík</item>
+        <item>Výmena kvapalín</item>
+        <item>Záručná prehliadka</item>
+        <item>iné</item>
+    </string-array>
+    <string-array name="statistiky">
+        <item>Všeobecné</item>
+        <item>Tankovanie</item>
+        <item>Údržba</item>
+        <item>STK</item>
+        <item>Opravy</item>
+    </string-array>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+</resources>

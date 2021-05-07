@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fillViewport="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:stretchColumns="1, 2"
+    android:layout_margin="8dp">
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="1, 2"
+        android:layout_margin="8dp">
+
+    <TableRow>
+        <TextView
+            android:text="Tankovanie"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:layout_gravity="left"
+            android:layout_column="1"/>
+        <TextView
+            android:text=""
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:layout_gravity="center"
+            android:layout_column="1"/>
+    </TableRow>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/statistikyTank"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TableRow>
+        <TextView
+            android:text="Údržba"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:layout_gravity="left"
+            android:layout_column="1"/>
+        <TextView
+            android:text=""
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:layout_gravity="center"
+            android:layout_column="1"/>
+    </TableRow>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/statistikyUdrzba"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TableRow>
+        <TextView
+            android:text="STK"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:layout_gravity="left"
+            android:layout_column="1"/>
+        <TextView
+            android:text=""
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:layout_gravity="center"
+            android:layout_column="1"/>
+    </TableRow>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/statistikySTK"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TableRow>
+        <TextView
+            android:text="Opravy"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:layout_gravity="left"
+            android:layout_column="1"/>
+        <TextView
+            android:text=""
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:layout_gravity="center"
+            android:layout_column="1"/>
+    </TableRow>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/statistikyOpravy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TableRow>
+        <TextView
+            android:text="Všeobecné"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:layout_gravity="left"
+            android:layout_column="1"/>
+        <TextView
+            android:text=""
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:layout_gravity="center"
+            android:layout_column="1"/>
+    </TableRow>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/statistikyVseob"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    </TableLayout>
+</ScrollView>
