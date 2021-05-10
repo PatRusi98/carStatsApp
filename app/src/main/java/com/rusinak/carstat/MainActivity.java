@@ -27,6 +27,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity{
 
     private AppBarConfiguration mAppBarConfiguration;
     public FloatingActionButton floatingActionButton;
+    private int idNotif = 0;
 
     Databaza databaza = new Databaza(this);
     Kalkulacka kalkulacka = new Kalkulacka();
@@ -58,152 +60,32 @@ public class MainActivity extends AppCompatActivity{
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+        generujUpozornenie();
+    }
+
+    public void generujUpozornenie() {
         Calendar calendar = Calendar.getInstance();
         calendar.set(calendar.HOUR_OF_DAY, 19);
         calendar.set(calendar.MINUTE, 00);
         calendar.set(Calendar.SECOND, 00);
 
-        Intent intentTank = new Intent(this, Upozornenia.class).putExtra("text", upozTank());
+        Intent intentTank = new Intent(this, Upozornenia.class);
         PendingIntent pendingIntentTank = PendingIntent.getBroadcast(this, 0, intentTank, 0);
         AlarmManager alarmManagerTank = (AlarmManager) getSystemService(ALARM_SERVICE);
         alarmManagerTank.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntentTank);
-        notifTankovanie();
-
-        Intent intentOlej = new Intent(this, Upozornenia.class).putExtra("text", upozOlej());
-        PendingIntent pendingIntentOlej = PendingIntent.getBroadcast(this, 0, intentOlej, 0);
-        AlarmManager alarmManagerOlej = (AlarmManager) getSystemService(ALARM_SERVICE);
-        alarmManagerOlej.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntentOlej);
-        notifOlej();
-
-        Intent intentPneu = new Intent(this, Upozornenia.class).putExtra("text", upozPneu());
-        PendingIntent pendingIntentPneu = PendingIntent.getBroadcast(this, 0, intentPneu, 0);
-        AlarmManager alarmManagerPneu = (AlarmManager) getSystemService(ALARM_SERVICE);
-        alarmManagerPneu.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntentPneu);
-        notifPneu();
-
-        Intent intentSTK = new Intent(this, Upozornenia.class).putExtra("text", upozStk());
-        PendingIntent pendingIntentSTK = PendingIntent.getBroadcast(this, 0, intentSTK, 0);
-        AlarmManager alarmManagerSTK = (AlarmManager) getSystemService(ALARM_SERVICE);
-        alarmManagerSTK.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntentSTK);
-        notifSTK();
-
+        notifChannel();
     }
 
-    private String aktDatum() {
-        Date datum = new Date();
-        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
-        return format.format(datum).toString();
-    }
+    public void notifChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "Moja notifikacia";
+            String description = "tu napisem info ";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("upozornenie", name, importance);
+            channel.setDescription(description);
 
-    private String orezanyDatum() {
-        Date datum = new Date();
-        int den = 0;
-        int rok = 0;
-        int mesiac = 0;
-        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
-        den = Integer.parseInt(format.format(datum).toString().substring(0, 2));
-        rok = Integer.parseInt(format.format(datum).toString().substring(6));
-        mesiac = Integer.parseInt(format.format(datum).toString().substring(3, 5));
-        mesiac++;
-
-        if (mesiac == 13) {
-            rok++;
-            mesiac = 1;
-        }
-
-        if (mesiac == 2 ||mesiac == 4 || mesiac == 6 || mesiac == 9 || mesiac == 11) {
-            if (den == 31)
-                den--;
-
-            if (den > 28 && mesiac == 2)
-                den = 28;
-        }
-
-        if (den < 10 && mesiac < 10) {
-            return "0" + den + ".0" + mesiac + "." + rok;
-        } else if (den < 10 && mesiac >= 10) {
-            return "0" + den + "." + mesiac + "." + rok;
-        } else if (den >= 10 && mesiac < 10) {
-            return den + ".0" + mesiac + "." + rok;
-        }
-
-        return den + "." + mesiac + "." + rok;
-    }
-
-    public String upozTank() {
-        return "Od posledného tankovania bola priemerná spotreba " + kalkulacka.priemernaSpotrebaPosl(databaza)
-                    + " l/100km a jeden kilometer ťa stál " + kalkulacka.cenaZaKMPoslTank(databaza) + "€";
-    }
-
-    public static String upozOlej() {
-        return "Blíži sa servisný interval výmeny oleja. Olej bol naposledy menený 2 roky dozadu.";
-    }
-
-    public static String upozPneu() {
-        return "Od 15.novembra platí povinnosť mať pri súvislej vrstve snehu zimné pneumatiky. Nezabudni ich čo najskôr prezuť.";
-    }
-
-    public static String upozStk() {
-        return "Platnosť STK ti končí o 1 mesiac. Nezabudni sa prihlásiť.";
-    }
-
-    public void notifTankovanie() {
-        if (aktDatum().equals(kalkulacka.posledneTank(databaza))) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                CharSequence name = "Moja notifikacia";
-                String description = "tu napisem info ";
-                int importance = NotificationManager.IMPORTANCE_DEFAULT;
-                NotificationChannel channel = new NotificationChannel("upoTank", name, importance);
-                channel.setDescription(description);
-
-                NotificationManager notificationManager = getSystemService(NotificationManager.class);
-                notificationManager.createNotificationChannel(channel);
-            }
-        }
-    }
-
-    public void notifOlej() {
-        if (orezanyDatum().equals(kalkulacka.poslednaVymOleja(databaza))) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                CharSequence name = "Moja notifikacia";
-                String description = "tu napisem info ";
-                int importance = NotificationManager.IMPORTANCE_DEFAULT;
-                NotificationChannel channel = new NotificationChannel("upoOlej", name, importance);
-                channel.setDescription(description);
-
-                NotificationManager notificationManager = getSystemService(NotificationManager.class);
-                notificationManager.createNotificationChannel(channel);
-            }
-        }
-    }
-
-    public void notifPneu() {
-        if (aktDatum().equals("08.11." + aktDatum().substring(6))) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                CharSequence name = "Moja notifikacia";
-                String description = "tu napisem info ";
-                int importance = NotificationManager.IMPORTANCE_DEFAULT;
-                NotificationChannel channel = new NotificationChannel("upoPneu", name, importance);
-                channel.setDescription(description);
-
-                NotificationManager notificationManager = getSystemService(NotificationManager.class);
-                notificationManager.createNotificationChannel(channel);
-            }
-        }
-    }
-
-    public void notifSTK() {
-        if (orezanyDatum().equals(kalkulacka.poslednaTK(databaza))) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                CharSequence name = "Moja notifikacia";
-                String description = "tu napisem info ";
-                int importance = NotificationManager.IMPORTANCE_DEFAULT;
-                NotificationChannel channel = new NotificationChannel("upoSTK", name, importance);
-                channel.setDescription(description);
-
-                NotificationManager notificationManager = getSystemService(NotificationManager.class);
-                notificationManager.createNotificationChannel(channel);
-            }
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
         }
     }
 

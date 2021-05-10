@@ -33,7 +33,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/statistikyTank"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"/>
 
     <TableRow>
         <TextView
@@ -55,7 +56,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/statistikyUdrzba"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"/>
 
     <TableRow>
         <TextView
@@ -77,7 +79,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/statistikySTK"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"/>
 
     <TableRow>
         <TextView
@@ -99,7 +102,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/statistikyOpravy"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"/>
 
     <TableRow>
         <TextView
@@ -121,6 +125,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/statistikyVseob"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"/>
     </TableLayout>
 </ScrollView>
