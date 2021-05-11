@@ -149,7 +149,7 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="160dp"
         android:text="Uložiť"
-        android:onClick="onClkUlozTankovanie"
+        android:onClick="onClkRefuellingInp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/miestoTankovaniaTankovanie" />
@@ -162,7 +162,7 @@
             android:layout_marginTop="50dp"
             android:layout_marginEnd="160dp"
             android:text="Vypíš zoznam tankovaní"
-            android:onClick="onClkVypisTankovanie"
+            android:onClick="onClkRefuellingOut"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ulozTankovanie" />

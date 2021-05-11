@@ -29,10 +29,6 @@
             android:icon="@drawable/ic_menu_stats"
             android:title="@string/menu_statistiky" />
         <item
-            android:id="@+id/nav_dashboard"
-            android:icon="@drawable/ic_menu_dash"
-            android:title="@string/menu_dashboard" />
-        <item
             android:id="@+id/nav_nastavenia"
             android:icon="@drawable/ic_menu_settings"
             android:title="@string/menu_nastavenia" />

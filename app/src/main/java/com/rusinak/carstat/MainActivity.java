@@ -16,7 +16,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.appcompat.app.AlertDialog;
@@ -27,20 +26,14 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 public class MainActivity extends AppCompatActivity{
 
     private AppBarConfiguration mAppBarConfiguration;
-    public FloatingActionButton floatingActionButton;
-    private int idNotif = 0;
 
-    Databaza databaza = new Databaza(this);
-    Kalkulacka kalkulacka = new Kalkulacka();
+    DBHelper db = new DBHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,33 +46,33 @@ public class MainActivity extends AppCompatActivity{
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_tankovanie, R.id.nav_udzba, R.id.nav_stk, R.id.nav_opravy, R.id.nav_jazdy, R.id.nav_statistiky, R.id.nav_dashboard, R.id.nav_nastavenia)
+                R.id.nav_tankovanie, R.id.nav_udzba, R.id.nav_stk, R.id.nav_opravy, R.id.nav_jazdy, R.id.nav_statistiky, R.id.nav_nastavenia)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        generujUpozornenie();
+        notificationGenerator();
     }
 
-    public void generujUpozornenie() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(calendar.HOUR_OF_DAY, 19);
-        calendar.set(calendar.MINUTE, 00);
-        calendar.set(Calendar.SECOND, 00);
+    public void notificationGenerator() {
+        Calendar cal = Calendar.getInstance();
+        cal.set(cal.HOUR_OF_DAY, 19);
+        cal.set(cal.MINUTE, 00);
+        cal.set(Calendar.SECOND, 00);
 
-        Intent intentTank = new Intent(this, Upozornenia.class);
-        PendingIntent pendingIntentTank = PendingIntent.getBroadcast(this, 0, intentTank, 0);
-        AlarmManager alarmManagerTank = (AlarmManager) getSystemService(ALARM_SERVICE);
-        alarmManagerTank.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntentTank);
+        Intent notifIntent = new Intent(this, Notifications.class);
+        PendingIntent pendingNotifIntent = PendingIntent.getBroadcast(this, 0, notifIntent, 0);
+        AlarmManager notifAM = (AlarmManager) getSystemService(ALARM_SERVICE);
+        notifAM.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingNotifIntent);
         notifChannel();
     }
 
     public void notifChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = "Moja notifikacia";
-            String description = "tu napisem info ";
+            CharSequence name = "NotificationChannel";
+            String description = "desc";
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
             NotificationChannel channel = new NotificationChannel("upozornenie", name, importance);
             channel.setDescription(description);
@@ -89,43 +82,43 @@ public class MainActivity extends AppCompatActivity{
         }
     }
 
-    public void onClkUlozTankovanie(View v) {
-        EditText natankovaneLitre = findViewById(R.id.natankovaneLitreTankovanie);
-        EditText zaplatenaSuma = findViewById(R.id.zaplatenaSumaTankovanie);
-        EditText stavTachometra = findViewById(R.id.stavTachometraTankovanie);
-        EditText datum = findViewById(R.id.datumTankovanie);
-        Spinner typPaliva = findViewById(R.id.typPalivaTankovanie);
-        EditText miestoTankovania = findViewById(R.id.miestoTankovaniaTankovanie);
-        String litre = natankovaneLitre.getText().toString();
-        String suma = zaplatenaSuma.getText().toString();
-        String tachometer = stavTachometra.getText().toString();
-        String date = datum.getText().toString();
-        String palivo = typPaliva.getSelectedItem().toString();
-        String miesto = miestoTankovania.getText().toString();
-        if (litre.isEmpty() || suma.isEmpty() || tachometer.isEmpty() || date.isEmpty()){
+    public void onClkRefuellingInp(View v) {
+        EditText litres = findViewById(R.id.natankovaneLitreTankovanie);
+        EditText price = findViewById(R.id.zaplatenaSumaTankovanie);
+        EditText odometer = findViewById(R.id.stavTachometraTankovanie);
+        EditText date = findViewById(R.id.datumTankovanie);
+        Spinner fueltype = findViewById(R.id.typPalivaTankovanie);
+        EditText place = findViewById(R.id.miestoTankovaniaTankovanie);
+        String sLitres = litres.getText().toString();
+        String sPrice = price.getText().toString();
+        String sOdometer = odometer.getText().toString();
+        String sDate = date.getText().toString();
+        String sFueltype = fueltype.getSelectedItem().toString();
+        String sPlace = place.getText().toString();
+        if (sLitres.isEmpty() || sPrice.isEmpty() || sOdometer.isEmpty() || sDate.isEmpty()){
             Toast.makeText(this, "Prázdne pole", Toast.LENGTH_SHORT).show();
             return;
         }
-        boolean vlozene = databaza.pridajTankovanie(litre, suma, tachometer, date, palivo, miesto);
-        if (vlozene) {
+        boolean inserted = db.addRefuel(sLitres, sPrice, sOdometer, sDate, sFueltype, sPlace);
+        if (inserted) {
             Toast.makeText(MainActivity.this, "Údaje boli vložené", Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void onClkVypisTankovanie (View v) {
-        Cursor cursor = databaza.getFromDB("Tankovanie");
-        if (cursor.getCount() == 0) {
+    public void onClkRefuellingOut(View v) {
+        Cursor cur = db.getFromDB("Tankovanie");
+        if (cur.getCount() == 0) {
             Toast.makeText(this, "Žiaden záznam", Toast.LENGTH_SHORT).show();
             return;
         }
         StringBuffer sb = new StringBuffer();
-        while (cursor.moveToNext()) {
-            sb.append("Dátum: " + cursor.getString(3) + "\n");
-            sb.append("Miesto tankovania: " + cursor.getString(5) + "\n");
-            sb.append("Typ paliva: " + cursor.getString(4) + "\n");
-            sb.append("Stav tachometra: " + cursor.getString(2) + "\n");
-            sb.append("Natankované litre: " + cursor.getString(0) + "\n");
-            sb.append("Zaplatená suma: " + cursor.getString(1) + "\n\n\n");
+        while (cur.moveToNext()) {
+            sb.append("Dátum: " + cur.getString(3) + "\n");
+            sb.append("Miesto tankovania: " + cur.getString(5) + "\n");
+            sb.append("Typ paliva: " + cur.getString(4) + "\n");
+            sb.append("Stav tachometra: " + cur.getString(2) + "\n");
+            sb.append("Natankované litre: " + cur.getString(0) + "\n");
+            sb.append("Zaplatená suma: " + cur.getString(1) + "\n\n\n");
         }
 
         AlertDialog.Builder adb = new AlertDialog.Builder(MainActivity.this);
@@ -135,31 +128,31 @@ public class MainActivity extends AppCompatActivity{
         adb.show();
     }
 
-    public void onClkUlozUdrzbu(View v) {
-        Spinner typUdrzby = findViewById(R.id.typUdrzbyUdrzba);
-        EditText zaplatenaSuma = findViewById(R.id.zaplatenaSumaUdrzba);
-        EditText stavTachometra = findViewById(R.id.stavTachometraUdrzba);
-        EditText datum = findViewById(R.id.datumUdrzba);
-        EditText poznamky = findViewById(R.id.poznamkyUdrzba);
-        EditText servis = findViewById(R.id.servisUdrzba);
-        String udrzba = typUdrzby.getSelectedItem().toString();
-        String suma = zaplatenaSuma.getText().toString();
-        String tachometer = stavTachometra.getText().toString();
-        String date = datum.getText().toString();
-        String poznamka = poznamky.getText().toString();
-        String miesto = servis.getText().toString();
-        if (suma.isEmpty() || tachometer.isEmpty() || date.isEmpty()){
+    public void onClkMaintInp(View v) {
+        Spinner mainttype = findViewById(R.id.typUdrzbyUdrzba);
+        EditText price = findViewById(R.id.zaplatenaSumaUdrzba);
+        EditText odometer = findViewById(R.id.stavTachometraUdrzba);
+        EditText date = findViewById(R.id.datumUdrzba);
+        EditText notes = findViewById(R.id.poznamkyUdrzba);
+        EditText service = findViewById(R.id.servisUdrzba);
+        String sMainttype = mainttype.getSelectedItem().toString();
+        String sPrice = price.getText().toString();
+        String sOdometer = odometer.getText().toString();
+        String sDate = date.getText().toString();
+        String sNotes = notes.getText().toString();
+        String sService = service.getText().toString();
+        if (sPrice.isEmpty() || sOdometer.isEmpty() || sDate.isEmpty()){
             Toast.makeText(this, "Prázdne pole", Toast.LENGTH_SHORT).show();
             return;
         }
-        boolean vlozene = databaza.pridajUdrzbu(udrzba, suma, tachometer, date, poznamka, miesto);
-        if (vlozene) {
+        boolean inserted = db.addMaint(sMainttype, sPrice, sOdometer, sDate, sNotes, sService);
+        if (inserted) {
             Toast.makeText(MainActivity.this, "Údaje boli vložené", Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void onClkVypisUdrzbu (View v) {
-        Cursor cursor = databaza.getFromDB("Udrzba");
+    public void onClkMaintOut(View v) {
+        Cursor cursor = db.getFromDB("Udrzba");
         if (cursor.getCount() == 0) {
             Toast.makeText(this, "Žiaden záznam", Toast.LENGTH_SHORT).show();
             return;
@@ -181,35 +174,35 @@ public class MainActivity extends AppCompatActivity{
         adb.show();
     }
 
-    public void onClkUlozSTK(View v) {
-        Spinner stk = findViewById(R.id.typKontrolySTK);
-        EditText zaplatenaSuma = findViewById(R.id.zaplatenaSumaSTK);
-        EditText stavTachometra = findViewById(R.id.stavTachometraSTK);
-        EditText datum = findViewById(R.id.datumSTK);
-        CheckBox uspesnost = findViewById(R.id.uspesnostSTK);
-        EditText stredisko = findViewById(R.id.miestoKontrolySTK);
-        String kontrola = stk.getSelectedItem().toString();
-        String suma = zaplatenaSuma.getText().toString();
-        String tachometer = stavTachometra.getText().toString();
-        String date = datum.getText().toString();
-        String uspesna;
-        if (uspesnost.isChecked())
-            uspesna = "úspešná";
+    public void onClkInspInp(View v) {
+        Spinner insptype = findViewById(R.id.typKontrolySTK);
+        EditText price = findViewById(R.id.zaplatenaSumaSTK);
+        EditText odometer = findViewById(R.id.stavTachometraSTK);
+        EditText date = findViewById(R.id.datumSTK);
+        CheckBox success = findViewById(R.id.uspesnostSTK);
+        EditText station = findViewById(R.id.miestoKontrolySTK);
+        String sInsptype = insptype.getSelectedItem().toString();
+        String sPrice = price.getText().toString();
+        String sOdometer = odometer.getText().toString();
+        String sDate = date.getText().toString();
+        String sSuccess;
+        if (success.isChecked())
+            sSuccess = "úspešná";
         else
-            uspesna = "neúspešná";
-        String miesto = stredisko.getText().toString();
-        if (suma.isEmpty() || tachometer.isEmpty() || date.isEmpty()){
+            sSuccess = "neúspešná";
+        String sStation = station.getText().toString();
+        if (sPrice.isEmpty() || sOdometer.isEmpty() || sDate.isEmpty()){
             Toast.makeText(this, "Prázdne pole", Toast.LENGTH_SHORT).show();
             return;
         }
-        boolean vlozene = databaza.pridajSTK(kontrola, suma, tachometer, date, uspesna, miesto);
-        if (vlozene) {
+        boolean inserted = db.addInsp(sInsptype, sPrice, sOdometer, sDate, sSuccess, sStation);
+        if (inserted) {
             Toast.makeText(MainActivity.this, "Údaje boli vložené", Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void onClkVypisSTK (View v) {
-        Cursor cursor = databaza.getFromDB("STK");
+    public void onClkInspOut(View v) {
+        Cursor cursor = db.getFromDB("STK");
         if (cursor.getCount() == 0) {
             Toast.makeText(this, "Žiaden záznam", Toast.LENGTH_SHORT).show();
             return;
@@ -231,31 +224,31 @@ public class MainActivity extends AppCompatActivity{
         adb.show();
     }
 
-    public void onClkUlozOpravu(View v) {
-        EditText typOpravy = findViewById(R.id.typOpravyOprava);
-        EditText zaplatenaSuma = findViewById(R.id.zaplatenaSumaOprava);
-        EditText stavTachometra = findViewById(R.id.stavTachometraOprava);
-        EditText datum = findViewById(R.id.datumOprava);
-        EditText poznamky = findViewById(R.id.poznamkyOprava);
-        EditText servis = findViewById(R.id.servisOprava);
-        String oprava = typOpravy.getText().toString();
-        String suma = zaplatenaSuma.getText().toString();
-        String tachometer = stavTachometra.getText().toString();
-        String date = datum.getText().toString();
-        String poznamka = poznamky.getText().toString();
-        String miesto = servis.getText().toString();
-        if (oprava.isEmpty() || suma.isEmpty() || tachometer.isEmpty() || date.isEmpty()){
+    public void onClkRepairInp(View v) {
+        EditText repairtype = findViewById(R.id.typOpravyOprava);
+        EditText price = findViewById(R.id.zaplatenaSumaOprava);
+        EditText odometer = findViewById(R.id.stavTachometraOprava);
+        EditText date = findViewById(R.id.datumOprava);
+        EditText notes = findViewById(R.id.poznamkyOprava);
+        EditText service = findViewById(R.id.servisOprava);
+        String sRepairtype = repairtype.getText().toString();
+        String sPrice = price.getText().toString();
+        String sOdometer = odometer.getText().toString();
+        String sDate = date.getText().toString();
+        String sNotes = notes.getText().toString();
+        String sService = service.getText().toString();
+        if (sRepairtype.isEmpty() || sPrice.isEmpty() || sOdometer.isEmpty() || sDate.isEmpty()){
             Toast.makeText(this, "Prázdne pole", Toast.LENGTH_SHORT).show();
             return;
         }
-        boolean vlozene = databaza.pridajOpravy(oprava, suma, tachometer, date, poznamka, miesto);
-        if (vlozene) {
+        boolean inserted = db.pridajOpravy(sRepairtype, sPrice, sOdometer, sDate, sNotes, sService);
+        if (inserted) {
             Toast.makeText(MainActivity.this, "Údaje boli vložené", Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void onClkVypisOpravu (View v) {
-        Cursor cursor = databaza.getFromDB("Opravy");
+    public void onClkRepairOut(View v) {
+        Cursor cursor = db.getFromDB("Opravy");
         if (cursor.getCount() == 0) {
             Toast.makeText(this, "Žiaden záznam", Toast.LENGTH_SHORT).show();
             return;
@@ -277,29 +270,29 @@ public class MainActivity extends AppCompatActivity{
         adb.show();
     }
 
-    public void onClkUlozJazdu(View v) {
-        EditText trasa = findViewById(R.id.trasaJazda);
-        EditText stavTachometraSt = findViewById(R.id.stavTachometraStJazda);
-        EditText stavTachometraEnd = findViewById(R.id.stavTachometraEndJazda);
-        EditText datum = findViewById(R.id.datumJazda);
-        EditText poznamky = findViewById(R.id.poznamkyJazda);
-        String cesta = trasa.getText().toString();
-        String tachometer1 = stavTachometraSt.getText().toString();
-        String tachometer2 = stavTachometraEnd.getText().toString();
-        String date = datum.getText().toString();
-        String poznamka = poznamky.getText().toString();
-        if (cesta.isEmpty() || tachometer1.isEmpty() || tachometer2.isEmpty() || date.isEmpty()){
+    public void onClkRideInp(View v) {
+        EditText trip = findViewById(R.id.trasaJazda);
+        EditText odometerPrev = findViewById(R.id.stavTachometraStJazda);
+        EditText odometerCur = findViewById(R.id.stavTachometraEndJazda);
+        EditText date = findViewById(R.id.datumJazda);
+        EditText notes = findViewById(R.id.poznamkyJazda);
+        String sTrip = trip.getText().toString();
+        String sOdometerPrev = odometerPrev.getText().toString();
+        String sOdometerCur = odometerCur.getText().toString();
+        String sDate = date.getText().toString();
+        String sNotes = notes.getText().toString();
+        if (sTrip.isEmpty() || sOdometerPrev.isEmpty() || sOdometerCur.isEmpty() || sDate.isEmpty()){
             Toast.makeText(this, "Prázdne pole", Toast.LENGTH_SHORT).show();
             return;
         }
-        boolean vlozene = databaza.pridajJazdy(cesta, tachometer1, tachometer2, date, poznamka);
-        if (vlozene) {
+        boolean inserted = db.addTrip(sTrip, sOdometerPrev, sOdometerCur, sDate, sNotes);
+        if (inserted) {
             Toast.makeText(MainActivity.this, "Údaje boli vložené", Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void onClkVypisJazdu (View v) {
-        Cursor cursor = databaza.getFromDB("Jazdy");
+    public void onClkRideOut(View v) {
+        Cursor cursor = db.getFromDB("Jazdy");
         if (cursor.getCount() == 0) {
             Toast.makeText(this, "Žiaden záznam", Toast.LENGTH_SHORT).show();
             return;
@@ -320,8 +313,8 @@ public class MainActivity extends AppCompatActivity{
         adb.show();
     }
 
-    public Databaza getDatabaza() {
-        return databaza;
+    public DBHelper getDBHelper() {
+        return db;
     }
 
     @Override
