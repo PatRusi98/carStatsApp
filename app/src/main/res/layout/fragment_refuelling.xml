@@ -12,7 +12,7 @@
         tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/natankovaneLitreTankovanie"
+        android:id="@+id/refuelLitres"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="101dp"
@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/zaplatenaSumaTankovanie"
+        android:id="@+id/refuelPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -31,10 +31,10 @@
         android:hint="0.00"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/natankovaneLitreTankovanie" />
+        app:layout_constraintTop_toBottomOf="@+id/refuelLitres" />
 
     <EditText
-        android:id="@+id/stavTachometraTankovanie"
+        android:id="@+id/refuelOdo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -42,10 +42,10 @@
         android:hint="0"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/zaplatenaSumaTankovanie" />
+        app:layout_constraintTop_toBottomOf="@+id/refuelPrice" />
 
     <EditText
-        android:id="@+id/datumTankovanie"
+        android:id="@+id/refuelDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -54,30 +54,19 @@
         android:hint="DD.MM.YYYY"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stavTachometraTankovanie" />
-
-    <!--<EditText
-        android:id="@+id/datumTankovanie"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:ems="10"
-        android:hint="DD.MM.YYYY"
-        android:inputType="date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stavTachometraTankovanie" />-->
+        app:layout_constraintTop_toBottomOf="@+id/refuelOdo" />
 
     <Spinner
-        android:id="@+id/typPalivaTankovanie"
+        android:id="@+id/refuelType"
         android:layout_width="177dp"
         android:layout_height="47dp"
         android:layout_marginTop="10dp"
         android:ems="10"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/datumTankovanie" />
+        app:layout_constraintTop_toBottomOf="@+id/refuelDate" />
 
     <EditText
-        android:id="@+id/miestoTankovaniaTankovanie"
+        android:id="@+id/refuelPlace"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -85,7 +74,7 @@
         android:hint="Čerpacia stanica"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/typPalivaTankovanie" />
+        app:layout_constraintTop_toBottomOf="@+id/refuelType" />
 
     <TextView
         android:id="@+id/textView3"
@@ -142,7 +131,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <Button
-        android:id="@+id/ulozTankovanie"
+        android:id="@+id/refuelSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="160dp"
@@ -152,10 +141,10 @@
         android:onClick="onClkRefuellingInp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/miestoTankovaniaTankovanie" />
+        app:layout_constraintTop_toBottomOf="@+id/refuelPlace" />
 
         <Button
-            android:id="@+id/vypisTankovanie"
+            android:id="@+id/refuelList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="160dp"
@@ -165,7 +154,7 @@
             android:onClick="onClkRefuellingOut"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ulozTankovanie" />
+            app:layout_constraintTop_toBottomOf="@+id/refuelSave" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

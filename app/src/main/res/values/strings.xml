@@ -10,15 +10,14 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_tankovanie">Tankovanie</string>
-    <string name="menu_udrzba">Údržba</string>
-    <string name="menu_stk">STK</string>
-    <string name="menu_opravy">Opravy</string>
-    <string name="menu_jazdy">Jazdy</string>
-    <string name="menu_statistiky">Štatistiky</string>
-    <string name="menu_dashboard">Dashboard</string>
-    <string name="menu_nastavenia">Nastavenia</string>
-    <string-array name="palivo">
+    <string name="menu_refuelling">Tankovanie</string>
+    <string name="menu_maintainance">Údržba</string>
+    <string name="menu_inspection">STK</string>
+    <string name="menu_repairs">Opravy</string>
+    <string name="menu_trips">Jazdy</string>
+    <string name="menu_stats">Štatistiky</string>
+    <string name="menu_settings">Nastavenia</string>
+    <string-array name="fuel_type">
         <item>Natural 95</item>
         <item>Natural 98</item>
         <item>Natural 100</item>
@@ -31,19 +30,19 @@
         <item>CNG</item>
         <item>iné</item>
     </string-array>
-    <string-array name="stk">
+    <string-array name="insp_type">
         <item>Technická kontrola</item>
         <item>Emisná kontrola</item>
         <item>Kontrola Originality</item>
     </string-array>
-    <string-array name="udrzba">
+    <string-array name="maint_type">
         <item>Výmena oleja a filtrov</item>
         <item>Prezúvanie pneumatík</item>
         <item>Výmena kvapalín</item>
         <item>Záručná prehliadka</item>
         <item>iné</item>
     </string-array>
-    <string-array name="statistiky">
+    <string-array name="stat_type">
         <item>Všeobecné</item>
         <item>Tankovanie</item>
         <item>Údržba</item>
@@ -52,4 +51,5 @@
     </string-array>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
+    <string name="tripRoute">A - B</string>
 </resources>

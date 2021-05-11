@@ -25,7 +25,7 @@ public class RepairFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         repairViewModel =
                 new ViewModelProvider(this).get(RepairViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_opravy, container, false);
+        View root = inflater.inflate(R.layout.fragment_repairs, container, false);
         //final TextView textView = root.findViewById(R.id.text_opravy);
         repairViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
@@ -35,7 +35,7 @@ public class RepairFragment extends Fragment {
         });
 
         EditText datumPole;
-        datumPole = root.findViewById(R.id.datumOprava);
+        datumPole = root.findViewById(R.id.repairDate);
 
 
         TextWatcher tw = new TextWatcher() {

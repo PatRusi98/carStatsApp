@@ -31,7 +31,7 @@ public class StatsFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         statsViewModel =
                 new ViewModelProvider(this).get(StatsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_statistiky, container, false);
+        View root = inflater.inflate(R.layout.fragment_stats, container, false);
         //final TextView textView = root.findViewById(R.id.text_statistiky);
         statsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
@@ -40,15 +40,15 @@ public class StatsFragment extends Fragment {
             }
         });
 
-        recyclerView = root.findViewById(R.id.statistikyTank);
+        recyclerView = root.findViewById(R.id.statsRefuel);
         setRecyclerView(listRefuel());
-        recyclerView = root.findViewById(R.id.statistikyUdrzba);
+        recyclerView = root.findViewById(R.id.statsMaint);
         setRecyclerView(listMaint());
-        recyclerView = root.findViewById(R.id.statistikySTK);
+        recyclerView = root.findViewById(R.id.statsInsp);
         setRecyclerView(listInsp());
-        recyclerView = root.findViewById(R.id.statistikyOpravy);
+        recyclerView = root.findViewById(R.id.statsRepair);
         setRecyclerView(listRepairs());
-        recyclerView = root.findViewById(R.id.statistikyVseob);
+        recyclerView = root.findViewById(R.id.statsAll);
         setRecyclerView(listAll());
         return root;
     }

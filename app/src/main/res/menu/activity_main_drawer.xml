@@ -5,32 +5,32 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_tankovanie"
+            android:id="@+id/nav_refuel"
             android:icon="@drawable/ic_menu_gasstation"
-            android:title="@string/menu_tankovanie" />
+            android:title="@string/menu_refuelling" />
         <item
-            android:id="@+id/nav_udzba"
+            android:id="@+id/nav_maint"
             android:icon="@drawable/ic_menu_udrzba"
-            android:title="@string/menu_udrzba" />
+            android:title="@string/menu_maintainance" />
         <item
-            android:id="@+id/nav_stk"
+            android:id="@+id/nav_insp"
             android:icon="@drawable/ic_menu_stk"
-            android:title="@string/menu_stk" />
+            android:title="@string/menu_inspection" />
         <item
-            android:id="@+id/nav_opravy"
+            android:id="@+id/nav_repairs"
             android:icon="@drawable/ic_menu_oprava"
-            android:title="@string/menu_opravy" />
+            android:title="@string/menu_repairs" />
         <item
-            android:id="@+id/nav_jazdy"
+            android:id="@+id/nav_trips"
             android:icon="@drawable/ic_menu_car"
-            android:title="@string/menu_jazdy" />
+            android:title="@string/menu_trips" />
         <item
-            android:id="@+id/nav_statistiky"
+            android:id="@+id/nav_stats"
             android:icon="@drawable/ic_menu_stats"
-            android:title="@string/menu_statistiky" />
+            android:title="@string/menu_stats" />
         <item
-            android:id="@+id/nav_nastavenia"
+            android:id="@+id/nav_settings"
             android:icon="@drawable/ic_menu_settings"
-            android:title="@string/menu_nastavenia" />
+            android:title="@string/menu_settings" />
     </group>
 </menu>

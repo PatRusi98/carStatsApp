@@ -28,7 +28,7 @@ public class InspectFragment extends Fragment implements AdapterView.OnItemSelec
                              ViewGroup container, Bundle savedInstanceState) {
         inspectViewModel =
                 new ViewModelProvider(this).get(InspectViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_stk, container, false);
+        View root = inflater.inflate(R.layout.fragment_inspection, container, false);
         //final TextView textView = root.findViewById(R.id.text_stk);
         inspectViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
@@ -36,14 +36,14 @@ public class InspectFragment extends Fragment implements AdapterView.OnItemSelec
                 //textView.setText(s);
             }
         });
-        Spinner typKontroly = root.findViewById(R.id.typKontrolySTK);
-        ArrayAdapter<CharSequence> typKontrolyAdapter = ArrayAdapter.createFromResource(getContext(), R.array.stk, android.R.layout.simple_spinner_item);
+        Spinner typKontroly = root.findViewById(R.id.inspType);
+        ArrayAdapter<CharSequence> typKontrolyAdapter = ArrayAdapter.createFromResource(getContext(), R.array.insp_type, android.R.layout.simple_spinner_item);
         typKontrolyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         typKontroly.setAdapter(typKontrolyAdapter);
         typKontroly.setOnItemSelectedListener(this);
 
         EditText datumPole;
-        datumPole = root.findViewById(R.id.datumSTK);
+        datumPole = root.findViewById(R.id.inspDate);
 
 
         TextWatcher tw = new TextWatcher() {

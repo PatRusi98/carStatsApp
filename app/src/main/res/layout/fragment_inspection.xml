@@ -12,7 +12,7 @@
         tools:context=".MainActivity">
 
     <Spinner
-        android:id="@+id/typKontrolySTK"
+        android:id="@+id/inspType"
         android:layout_width="181dp"
         android:layout_height="46dp"
         android:layout_marginTop="101dp"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/zaplatenaSumaSTK"
+        android:id="@+id/inspPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -29,10 +29,10 @@
         android:hint="0.00"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/typKontrolySTK" />
+        app:layout_constraintTop_toBottomOf="@+id/inspType" />
 
     <EditText
-        android:id="@+id/stavTachometraSTK"
+        android:id="@+id/inspOdo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -40,10 +40,10 @@
         android:hint="0"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/zaplatenaSumaSTK" />
+        app:layout_constraintTop_toBottomOf="@+id/inspPrice" />
 
     <EditText
-        android:id="@+id/datumSTK"
+        android:id="@+id/inspDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -51,21 +51,21 @@
         android:hint="DD.MM.YYYY"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stavTachometraSTK" />
+        app:layout_constraintTop_toBottomOf="@+id/inspOdo" />
 
     <CheckBox
-        android:id="@+id/uspesnostSTK"
+        android:id="@+id/inspSuccess"
         android:layout_width="176dp"
         android:layout_height="43dp"
         android:layout_marginTop="10dp"
         android:ems="10"
         android:text="Úspešná"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/datumSTK" />
+        app:layout_constraintTop_toBottomOf="@+id/inspDate" />
 
 
     <EditText
-        android:id="@+id/miestoKontrolySTK"
+        android:id="@+id/inspStation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -73,7 +73,7 @@
         android:hint="Názov Stanice"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/uspesnostSTK" />
+        app:layout_constraintTop_toBottomOf="@+id/inspSuccess" />
 
         <TextView
             android:id="@+id/textView3"
@@ -130,7 +130,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <Button
-        android:id="@+id/ulozSTK"
+        android:id="@+id/inspSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="160dp"
@@ -140,10 +140,10 @@
         android:onClick="onClkInspInp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/miestoKontrolySTK" />
+        app:layout_constraintTop_toBottomOf="@+id/inspStation" />
 
         <Button
-            android:id="@+id/vypisSTK"
+            android:id="@+id/inspList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="160dp"
@@ -153,7 +153,7 @@
             android:onClick="onClkInspOut"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ulozSTK" />
+            app:layout_constraintTop_toBottomOf="@+id/inspSave" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

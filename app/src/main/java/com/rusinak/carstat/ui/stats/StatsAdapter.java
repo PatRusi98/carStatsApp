@@ -51,8 +51,8 @@ public class StatsAdapter extends RecyclerView.Adapter<StatsAdapter.ViewHolder> 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            menoStatistiky = itemView.findViewById(R.id.menoStatistiky);
-            hodnStatistiky = itemView.findViewById(R.id.hodnStatistiky);
+            menoStatistiky = itemView.findViewById(R.id.statName);
+            hodnStatistiky = itemView.findViewById(R.id.statValue);
 
         }
     }

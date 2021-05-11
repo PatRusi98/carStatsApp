@@ -25,7 +25,7 @@ public class TripFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         tripViewModel =
                 new ViewModelProvider(this).get(TripViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_jazdy, container, false);
+        View root = inflater.inflate(R.layout.fragment_trips, container, false);
         //final TextView textView = root.findViewById(R.id.text_jazdy);
         tripViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
@@ -35,7 +35,7 @@ public class TripFragment extends Fragment {
         });
 
         EditText datumPole;
-        datumPole = root.findViewById(R.id.datumJazda);
+        datumPole = root.findViewById(R.id.tripDate);
 
 
         TextWatcher tw = new TextWatcher() {

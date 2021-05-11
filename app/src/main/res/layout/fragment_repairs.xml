@@ -12,7 +12,7 @@
         tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/typOpravyOprava"
+        android:id="@+id/repairType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="101dp"
@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/zaplatenaSumaOprava"
+        android:id="@+id/repairPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -31,10 +31,10 @@
         android:hint="0.00"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/typOpravyOprava" />
+        app:layout_constraintTop_toBottomOf="@+id/repairType" />
 
     <EditText
-        android:id="@+id/stavTachometraOprava"
+        android:id="@+id/repairOdo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -42,10 +42,10 @@
         android:hint="0"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/zaplatenaSumaOprava" />
+        app:layout_constraintTop_toBottomOf="@+id/repairPrice" />
 
     <EditText
-        android:id="@+id/datumOprava"
+        android:id="@+id/repairDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -53,10 +53,10 @@
         android:hint="DD.MM.YYYY"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stavTachometraOprava" />
+        app:layout_constraintTop_toBottomOf="@+id/repairOdo" />
 
     <EditText
-        android:id="@+id/poznamkyOprava"
+        android:id="@+id/repairNotes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -64,10 +64,10 @@
         android:hint=""
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/datumOprava" />
+        app:layout_constraintTop_toBottomOf="@+id/repairDate" />
 
     <EditText
-        android:id="@+id/servisOprava"
+        android:id="@+id/repairService"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -75,7 +75,7 @@
         android:hint="Názov Servisu"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/poznamkyOprava" />
+        app:layout_constraintTop_toBottomOf="@+id/repairNotes" />
 
     <TextView
         android:id="@+id/textView3"
@@ -132,7 +132,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
         <Button
-            android:id="@+id/ulozOpravy"
+            android:id="@+id/repairSave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="160dp"
@@ -143,10 +143,10 @@
             app:iconTint="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/servisOprava" />
+            app:layout_constraintTop_toBottomOf="@+id/repairService" />
 
         <Button
-            android:id="@+id/vypisTankovanie"
+            android:id="@+id/repairList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="160dp"
@@ -156,7 +156,7 @@
             android:onClick="onClkRepairOut"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ulozOpravy" />
+            app:layout_constraintTop_toBottomOf="@+id/repairSave" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

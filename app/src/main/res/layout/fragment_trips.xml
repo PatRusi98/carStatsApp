@@ -13,18 +13,18 @@
         tools:context=".MainActivity">
 
         <EditText
-            android:id="@+id/trasaJazda"
+            android:id="@+id/tripRoute"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="101dp"
             android:ems="10"
-            android:hint="A - B"
+            android:hint="@string/tripRoute"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/stavTachometraStJazda"
+            android:id="@+id/tripOdoSt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -32,10 +32,10 @@
             android:hint="0"
             android:inputType="numberDecimal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/trasaJazda" />
+            app:layout_constraintTop_toBottomOf="@+id/tripRoute" />
 
         <EditText
-            android:id="@+id/stavTachometraEndJazda"
+            android:id="@+id/tripOdoFin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -43,10 +43,10 @@
             android:hint="0"
             android:inputType="numberDecimal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/stavTachometraStJazda" />
+            app:layout_constraintTop_toBottomOf="@+id/tripOdoSt" />
 
         <EditText
-            android:id="@+id/datumJazda"
+            android:id="@+id/tripDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -54,10 +54,10 @@
             android:hint="DD.MM.YYYY"
             android:inputType="date"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/stavTachometraEndJazda" />
+            app:layout_constraintTop_toBottomOf="@+id/tripOdoFin" />
 
         <EditText
-            android:id="@+id/poznamkyJazda"
+            android:id="@+id/tripNotes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -65,7 +65,7 @@
             android:hint=""
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/datumJazda" />
+            app:layout_constraintTop_toBottomOf="@+id/tripDate" />
 
 
         <TextView
@@ -114,7 +114,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
         <Button
-            android:id="@+id/ulozJazdy"
+            android:id="@+id/tripSave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="160dp"
@@ -124,10 +124,10 @@
             android:onClick="onClkRideInp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/poznamkyJazda" />
+            app:layout_constraintTop_toBottomOf="@+id/tripNotes" />
 
         <Button
-            android:id="@+id/vypisJazdy"
+            android:id="@+id/tripList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="160dp"
@@ -137,7 +137,7 @@
             android:onClick="onClkRideOut"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ulozJazdy" />
+            app:layout_constraintTop_toBottomOf="@+id/tripSave" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

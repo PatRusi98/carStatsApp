@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity{
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_tankovanie, R.id.nav_udzba, R.id.nav_stk, R.id.nav_opravy, R.id.nav_jazdy, R.id.nav_statistiky, R.id.nav_nastavenia)
+                R.id.nav_refuel, R.id.nav_maint, R.id.nav_insp, R.id.nav_repairs, R.id.nav_trips, R.id.nav_stats, R.id.nav_settings)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -83,12 +83,12 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void onClkRefuellingInp(View v) {
-        EditText litres = findViewById(R.id.natankovaneLitreTankovanie);
-        EditText price = findViewById(R.id.zaplatenaSumaTankovanie);
-        EditText odometer = findViewById(R.id.stavTachometraTankovanie);
-        EditText date = findViewById(R.id.datumTankovanie);
-        Spinner fueltype = findViewById(R.id.typPalivaTankovanie);
-        EditText place = findViewById(R.id.miestoTankovaniaTankovanie);
+        EditText litres = findViewById(R.id.refuelLitres);
+        EditText price = findViewById(R.id.refuelPrice);
+        EditText odometer = findViewById(R.id.refuelOdo);
+        EditText date = findViewById(R.id.refuelDate);
+        Spinner fueltype = findViewById(R.id.refuelType);
+        EditText place = findViewById(R.id.refuelPlace);
         String sLitres = litres.getText().toString();
         String sPrice = price.getText().toString();
         String sOdometer = odometer.getText().toString();
@@ -129,12 +129,12 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void onClkMaintInp(View v) {
-        Spinner mainttype = findViewById(R.id.typUdrzbyUdrzba);
-        EditText price = findViewById(R.id.zaplatenaSumaUdrzba);
-        EditText odometer = findViewById(R.id.stavTachometraUdrzba);
-        EditText date = findViewById(R.id.datumUdrzba);
-        EditText notes = findViewById(R.id.poznamkyUdrzba);
-        EditText service = findViewById(R.id.servisUdrzba);
+        Spinner mainttype = findViewById(R.id.maintType);
+        EditText price = findViewById(R.id.maintPrice);
+        EditText odometer = findViewById(R.id.maintOdo);
+        EditText date = findViewById(R.id.maintDate);
+        EditText notes = findViewById(R.id.maintNotes);
+        EditText service = findViewById(R.id.maintService);
         String sMainttype = mainttype.getSelectedItem().toString();
         String sPrice = price.getText().toString();
         String sOdometer = odometer.getText().toString();
@@ -175,12 +175,12 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void onClkInspInp(View v) {
-        Spinner insptype = findViewById(R.id.typKontrolySTK);
-        EditText price = findViewById(R.id.zaplatenaSumaSTK);
-        EditText odometer = findViewById(R.id.stavTachometraSTK);
-        EditText date = findViewById(R.id.datumSTK);
-        CheckBox success = findViewById(R.id.uspesnostSTK);
-        EditText station = findViewById(R.id.miestoKontrolySTK);
+        Spinner insptype = findViewById(R.id.inspType);
+        EditText price = findViewById(R.id.inspPrice);
+        EditText odometer = findViewById(R.id.inspOdo);
+        EditText date = findViewById(R.id.inspDate);
+        CheckBox success = findViewById(R.id.inspSuccess);
+        EditText station = findViewById(R.id.inspStation);
         String sInsptype = insptype.getSelectedItem().toString();
         String sPrice = price.getText().toString();
         String sOdometer = odometer.getText().toString();
@@ -225,12 +225,12 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void onClkRepairInp(View v) {
-        EditText repairtype = findViewById(R.id.typOpravyOprava);
-        EditText price = findViewById(R.id.zaplatenaSumaOprava);
-        EditText odometer = findViewById(R.id.stavTachometraOprava);
-        EditText date = findViewById(R.id.datumOprava);
-        EditText notes = findViewById(R.id.poznamkyOprava);
-        EditText service = findViewById(R.id.servisOprava);
+        EditText repairtype = findViewById(R.id.repairType);
+        EditText price = findViewById(R.id.repairPrice);
+        EditText odometer = findViewById(R.id.repairOdo);
+        EditText date = findViewById(R.id.repairDate);
+        EditText notes = findViewById(R.id.repairNotes);
+        EditText service = findViewById(R.id.repairService);
         String sRepairtype = repairtype.getText().toString();
         String sPrice = price.getText().toString();
         String sOdometer = odometer.getText().toString();
@@ -271,11 +271,11 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void onClkRideInp(View v) {
-        EditText trip = findViewById(R.id.trasaJazda);
-        EditText odometerPrev = findViewById(R.id.stavTachometraStJazda);
-        EditText odometerCur = findViewById(R.id.stavTachometraEndJazda);
-        EditText date = findViewById(R.id.datumJazda);
-        EditText notes = findViewById(R.id.poznamkyJazda);
+        EditText trip = findViewById(R.id.tripRoute);
+        EditText odometerPrev = findViewById(R.id.tripOdoSt);
+        EditText odometerCur = findViewById(R.id.tripOdoFin);
+        EditText date = findViewById(R.id.tripDate);
+        EditText notes = findViewById(R.id.tripNotes);
         String sTrip = trip.getText().toString();
         String sOdometerPrev = odometerPrev.getText().toString();
         String sOdometerCur = odometerCur.getText().toString();

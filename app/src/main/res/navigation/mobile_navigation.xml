@@ -3,48 +3,48 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_tankovanie">
+    app:startDestination="@+id/nav_refuel">
 
     <fragment
-        android:id="@+id/nav_tankovanie"
+        android:id="@+id/nav_refuel"
         android:name="com.rusinak.carstat.ui.refuelling.RefuelFragment"
-        android:label="@string/menu_tankovanie"
-        tools:layout="@layout/fragment_tankovanie" />
+        android:label="@string/menu_refuelling"
+        tools:layout="@layout/fragment_refuelling" />
 
     <fragment
-        android:id="@+id/nav_udzba"
+        android:id="@+id/nav_maint"
         android:name="com.rusinak.carstat.ui.maintainance.MaintFragment"
-        android:label="@string/menu_udrzba"
-        tools:layout="@layout/fragment_udrzba" />
+        android:label="@string/menu_maintainance"
+        tools:layout="@layout/fragment_maintainance" />
 
     <fragment
-        android:id="@+id/nav_stk"
+        android:id="@+id/nav_insp"
         android:name="com.rusinak.carstat.ui.inspection.InspectFragment"
-        android:label="@string/menu_stk"
-        tools:layout="@layout/fragment_stk" />
+        android:label="@string/menu_inspection"
+        tools:layout="@layout/fragment_inspection" />
 
     <fragment
-        android:id="@+id/nav_opravy"
+        android:id="@+id/nav_repairs"
         android:name="com.rusinak.carstat.ui.repairs.RepairFragment"
-        android:label="@string/menu_opravy"
-        tools:layout="@layout/fragment_opravy" />
+        android:label="@string/menu_repairs"
+        tools:layout="@layout/fragment_repairs" />
 
     <fragment
-        android:id="@+id/nav_jazdy"
+        android:id="@+id/nav_trips"
         android:name="com.rusinak.carstat.ui.trips.TripFragment"
-        android:label="@string/menu_jazdy"
-        tools:layout="@layout/fragment_jazdy" />
+        android:label="@string/menu_trips"
+        tools:layout="@layout/fragment_trips" />
 
     <fragment
-        android:id="@+id/nav_statistiky"
+        android:id="@+id/nav_stats"
         android:name="com.rusinak.carstat.ui.stats.StatsFragment"
-        android:label="@string/menu_statistiky"
-        tools:layout="@layout/fragment_statistiky" />
+        android:label="@string/menu_stats"
+        tools:layout="@layout/fragment_stats" />
 
     <fragment
-        android:id="@+id/nav_nastavenia"
+        android:id="@+id/nav_settings"
         android:name="com.rusinak.carstat.ui.settings.SettingsFragment"
-        android:label="@string/menu_nastavenia"
-        tools:layout="@layout/fragment_nastavenia" />
+        android:label="@string/menu_settings"
+        tools:layout="@layout/fragment_settings" />
 
 </navigation>

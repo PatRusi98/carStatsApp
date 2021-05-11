@@ -12,7 +12,7 @@
         tools:context=".MainActivity">
 
     <Spinner
-        android:id="@+id/typUdrzbyUdrzba"
+        android:id="@+id/maintType"
         android:layout_width="177dp"
         android:layout_height="42dp"
         android:layout_marginTop="101dp"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/zaplatenaSumaUdrzba"
+        android:id="@+id/maintPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -29,10 +29,10 @@
         android:hint="0.00"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/typUdrzbyUdrzba" />
+        app:layout_constraintTop_toBottomOf="@+id/maintType" />
 
     <EditText
-        android:id="@+id/stavTachometraUdrzba"
+        android:id="@+id/maintOdo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -40,10 +40,10 @@
         android:hint="0"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/zaplatenaSumaUdrzba" />
+        app:layout_constraintTop_toBottomOf="@+id/maintPrice" />
 
     <EditText
-        android:id="@+id/datumUdrzba"
+        android:id="@+id/maintDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -51,10 +51,10 @@
         android:hint="DD.MM.YYYY"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stavTachometraUdrzba" />
+        app:layout_constraintTop_toBottomOf="@+id/maintOdo" />
 
     <EditText
-        android:id="@+id/poznamkyUdrzba"
+        android:id="@+id/maintNotes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -62,10 +62,10 @@
         android:hint=""
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/datumUdrzba" />
+        app:layout_constraintTop_toBottomOf="@+id/maintDate" />
 
     <EditText
-        android:id="@+id/servisUdrzba"
+        android:id="@+id/maintService"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -73,7 +73,7 @@
         android:hint="Názov Servisu"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/poznamkyUdrzba" />
+        app:layout_constraintTop_toBottomOf="@+id/maintNotes" />
 
         <TextView
             android:id="@+id/textView3"
@@ -130,7 +130,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <Button
-        android:id="@+id/ulozUdrzbu"
+        android:id="@+id/maintSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="160dp"
@@ -140,10 +140,10 @@
         android:onClick="onClkMaintInp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/servisUdrzba" />
+        app:layout_constraintTop_toBottomOf="@+id/maintService" />
 
         <Button
-            android:id="@+id/vypisUdrzbu"
+            android:id="@+id/maintList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="160dp"
@@ -153,7 +153,7 @@
             android:onClick="onClkMaintOut"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ulozUdrzbu" />
+            app:layout_constraintTop_toBottomOf="@+id/maintSave" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

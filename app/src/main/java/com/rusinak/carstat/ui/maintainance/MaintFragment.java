@@ -28,21 +28,21 @@ public class MaintFragment extends Fragment implements AdapterView.OnItemSelecte
                              ViewGroup container, Bundle savedInstanceState) {
         maintViewModel =
                 new ViewModelProvider(this).get(MaintViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_udrzba, container, false);
+        View root = inflater.inflate(R.layout.fragment_maintainance, container, false);
         maintViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 //textView.setText(s);
             }
         });
-        Spinner typUdrzby = root.findViewById(R.id.typUdrzbyUdrzba);
-        ArrayAdapter<CharSequence> typUdrzbyAdapter = ArrayAdapter.createFromResource(getContext(), R.array.udrzba, android.R.layout.simple_spinner_item);
+        Spinner typUdrzby = root.findViewById(R.id.maintType);
+        ArrayAdapter<CharSequence> typUdrzbyAdapter = ArrayAdapter.createFromResource(getContext(), R.array.maint_type, android.R.layout.simple_spinner_item);
         typUdrzbyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         typUdrzby.setAdapter(typUdrzbyAdapter);
         typUdrzby.setOnItemSelectedListener(this);
 
         EditText datumPole;
-        datumPole = root.findViewById(R.id.datumUdrzba);
+        datumPole = root.findViewById(R.id.maintDate);
 
         TextWatcher tw = new TextWatcher() {
             private String current = "";

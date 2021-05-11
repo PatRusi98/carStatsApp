@@ -28,21 +28,21 @@ public class RefuelFragment extends Fragment implements AdapterView.OnItemSelect
                              ViewGroup container, Bundle savedInstanceState) {
         refuelViewModel =
                 new ViewModelProvider(this).get(RefuelViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_tankovanie, container, false);
+        View root = inflater.inflate(R.layout.fragment_refuelling, container, false);
         refuelViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 //textView.setText(s);
             }
         });
-        Spinner typPaliva = root.findViewById(R.id.typPalivaTankovanie);
-        ArrayAdapter<CharSequence> typPalivaAdapter = ArrayAdapter.createFromResource(getContext(), R.array.palivo, android.R.layout.simple_spinner_item);
+        Spinner typPaliva = root.findViewById(R.id.refuelType);
+        ArrayAdapter<CharSequence> typPalivaAdapter = ArrayAdapter.createFromResource(getContext(), R.array.fuel_type, android.R.layout.simple_spinner_item);
         typPalivaAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         typPaliva.setAdapter(typPalivaAdapter);
         typPaliva.setOnItemSelectedListener(this);
 
         EditText datumPole;
-        datumPole = root.findViewById(R.id.datumTankovanie);
+        datumPole = root.findViewById(R.id.refuelDate);
 
 
         TextWatcher tw = new TextWatcher() {
