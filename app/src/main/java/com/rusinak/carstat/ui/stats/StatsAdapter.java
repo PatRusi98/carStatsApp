@@ -16,11 +16,11 @@ import java.util.List;
 public class StatsAdapter extends RecyclerView.Adapter<StatsAdapter.ViewHolder> {
 
     Context context;
-    List<StatsModel> statistiky;
+    List<StatsModel> listStats;
 
-    public StatsAdapter(Context context, List<StatsModel> statistiky) {
+    public StatsAdapter(Context context, List<StatsModel> listStats) {
         this.context = context;
-        this.statistiky = statistiky;
+        this.listStats = listStats;
     }
 
     @NonNull
@@ -32,10 +32,10 @@ public class StatsAdapter extends RecyclerView.Adapter<StatsAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull StatsAdapter.ViewHolder holder, int position) {
-        if (statistiky != null && statistiky.size() > 0) {
-            StatsModel stats = statistiky.get(position);
-            holder.menoStatistiky.setText(stats.getStatName());
-            holder.hodnStatistiky.setText(stats.getStatValue());
+        if (listStats != null && listStats.size() > 0) {
+            StatsModel stats = listStats.get(position);
+            holder.nameStats.setText(stats.getStatName());
+            holder.valueStats.setText(stats.getStatValue());
         } else {
             return;
         }
@@ -43,16 +43,16 @@ public class StatsAdapter extends RecyclerView.Adapter<StatsAdapter.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        return statistiky.size();
+        return listStats.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView menoStatistiky, hodnStatistiky;
+        TextView nameStats, valueStats;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            menoStatistiky = itemView.findViewById(R.id.statName);
-            hodnStatistiky = itemView.findViewById(R.id.statValue);
+            nameStats = itemView.findViewById(R.id.statName);
+            valueStats = itemView.findViewById(R.id.statValue);
 
         }
     }

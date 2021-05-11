@@ -32,11 +32,10 @@ public class StatsFragment extends Fragment {
         statsViewModel =
                 new ViewModelProvider(this).get(StatsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_stats, container, false);
-        //final TextView textView = root.findViewById(R.id.text_statistiky);
         statsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-            //    textView.setText(s);
+
             }
         });
 
@@ -53,6 +52,12 @@ public class StatsFragment extends Fragment {
         return root;
     }
 
+    /**
+     *
+     * sets recycle view for statistics
+     *
+     * @param model list of statistics
+     */
     private void setRecyclerView(List<StatsModel> model) {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -60,6 +65,12 @@ public class StatsFragment extends Fragment {
         recyclerView.setAdapter(statsAdapter);
     }
 
+    /**
+     *
+     * method that returns list of statistics related to refuelling
+     *
+     * @return returns list of statistics related to refuelling
+     */
     private List<StatsModel> listRefuel() {
         List<StatsModel> listStat = new ArrayList<>();
         listStat.add(new StatsModel("", ""));
@@ -74,6 +85,12 @@ public class StatsFragment extends Fragment {
         return listStat;
     }
 
+    /**
+     *
+     * method that returns list of statistics related to maintainance
+     *
+     * @return returns list of statistics related to maintainance
+     */
     private List<StatsModel> listMaint() {
         List<StatsModel> listStat = new ArrayList<>();
         listStat.add(new StatsModel("", ""));
@@ -84,6 +101,12 @@ public class StatsFragment extends Fragment {
         return listStat;
     }
 
+    /**
+     *
+     * method that returns list of statistics related to inspections
+     *
+     * @return returns list of statistics related to inspections
+     */
     private List<StatsModel> listInsp() {
         List<StatsModel> listStat = new ArrayList<>();
         listStat.add(new StatsModel("", ""));
@@ -94,6 +117,12 @@ public class StatsFragment extends Fragment {
         return listStat;
     }
 
+    /**
+     *
+     * method that returns list of statistics related to repairs
+     *
+     * @return returns list of statistics related to repairs
+     */
     private List<StatsModel> listRepairs() {
         List<StatsModel> listStat = new ArrayList<>();
         listStat.add(new StatsModel("", ""));
@@ -103,6 +132,12 @@ public class StatsFragment extends Fragment {
         return listStat;
     }
 
+    /**
+     *
+     * method that returns list of statistics related to car
+     *
+     * @return returns list of statistics related to car
+     */
     private List<StatsModel> listAll() {
         List<StatsModel> listStat = new ArrayList<>();
         listStat.add(new StatsModel("", ""));

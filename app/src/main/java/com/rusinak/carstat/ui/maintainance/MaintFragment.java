@@ -32,7 +32,7 @@ public class MaintFragment extends Fragment implements AdapterView.OnItemSelecte
         maintViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                //textView.setText(s);
+
             }
         });
         Spinner typUdrzby = root.findViewById(R.id.maintType);
@@ -41,8 +41,8 @@ public class MaintFragment extends Fragment implements AdapterView.OnItemSelecte
         typUdrzby.setAdapter(typUdrzbyAdapter);
         typUdrzby.setOnItemSelectedListener(this);
 
-        EditText datumPole;
-        datumPole = root.findViewById(R.id.maintDate);
+        EditText dateInput;
+        dateInput = root.findViewById(R.id.maintDate);
 
         TextWatcher tw = new TextWatcher() {
             private String current = "";
@@ -65,14 +65,14 @@ public class MaintFragment extends Fragment implements AdapterView.OnItemSelecte
                     for (int i = 2; i <= cl && i < 6; i += 2) {
                         sel++;
                     }
-                    //Fix for pressing delete next to a forward slash
-                    if (clean.equals(cleanC)) sel--;
+
+                    if (clean.equals(cleanC))
+                        sel--;
 
                     if (clean.length() < 8) {
                         clean = clean + ddmmyyyy.substring(clean.length());
                     } else {
-                        //This part makes sure that when we finish entering numbers
-                        //the date is correct, fixing it otherwise
+
                         int day = Integer.parseInt(clean.substring(0, 2));
                         int mon = Integer.parseInt(clean.substring(2, 4));
                         int year = Integer.parseInt(clean.substring(4, 8));
@@ -81,9 +81,6 @@ public class MaintFragment extends Fragment implements AdapterView.OnItemSelecte
                         cal.set(Calendar.MONTH, mon - 1);
                         year = (year < 1900) ? 1900 : (year > 2100) ? 2100 : year;
                         cal.set(Calendar.YEAR, year);
-                        // ^ first set year for the line below to work correctly
-                        //with leap years - otherwise, date e.g. 29/02/2012
-                        //would be automatically corrected to 28/02/2012
 
                         day = (day > cal.getActualMaximum(Calendar.DATE)) ? cal.getActualMaximum(Calendar.DATE) : day;
                         clean = String.format("%02d%02d%02d", day, mon, year);
@@ -95,8 +92,8 @@ public class MaintFragment extends Fragment implements AdapterView.OnItemSelecte
 
                     sel = sel < 0 ? 0 : sel;
                     current = clean;
-                    datumPole.setText(current);
-                    datumPole.setSelection(sel < current.length() ? sel : current.length());
+                    dateInput.setText(current);
+                    dateInput.setSelection(sel < current.length() ? sel : current.length());
                 }
             }
 
@@ -105,7 +102,7 @@ public class MaintFragment extends Fragment implements AdapterView.OnItemSelecte
 
             }
         };
-        datumPole.addTextChangedListener(tw);
+        dateInput.addTextChangedListener(tw);
         return root;
     }
 

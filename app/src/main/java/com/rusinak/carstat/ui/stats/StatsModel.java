@@ -9,10 +9,22 @@ public class StatsModel {
         this.statValue = statValue;
     }
 
+    /**
+     *
+     * method that returns name of stat
+     *
+     * @return name of stat
+     */
     public String getStatName() {
         return statName;
     }
 
+    /**
+     *
+     * method that returns value of stat
+     *
+     * @return returns value of stat
+     */
     public String getStatValue() {
         return statValue;
     }

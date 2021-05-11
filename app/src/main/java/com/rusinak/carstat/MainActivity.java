@@ -29,6 +29,11 @@ import androidx.appcompat.widget.Toolbar;
 
 import java.util.Calendar;
 
+/**
+ *
+ * MainActivity class
+ *
+ */
 public class MainActivity extends AppCompatActivity{
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -56,6 +61,11 @@ public class MainActivity extends AppCompatActivity{
         notificationGenerator();
     }
 
+    /**
+     *
+     * calls notification channel at exact time interval
+     *
+     */
     public void notificationGenerator() {
         Calendar cal = Calendar.getInstance();
         cal.set(cal.HOUR_OF_DAY, 19);
@@ -69,6 +79,11 @@ public class MainActivity extends AppCompatActivity{
         notifChannel();
     }
 
+    /**
+     *
+     * creates notification channel
+     *
+     */
     public void notifChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             CharSequence name = "NotificationChannel";
@@ -82,6 +97,12 @@ public class MainActivity extends AppCompatActivity{
         }
     }
 
+    /**
+     *
+     * on click listener for "save" button, inserts values from user input into database table
+     *
+     * @param v
+     */
     public void onClkRefuellingInp(View v) {
         EditText litres = findViewById(R.id.refuelLitres);
         EditText price = findViewById(R.id.refuelPrice);
@@ -105,6 +126,13 @@ public class MainActivity extends AppCompatActivity{
         }
     }
 
+    /**
+     *
+     * on click listener for "list" button, puts values from database table into string
+     * and creates alert dialog with those values
+     *
+     * @param v
+     */
     public void onClkRefuellingOut(View v) {
         Cursor cur = db.getFromDB("Tankovanie");
         if (cur.getCount() == 0) {
@@ -128,6 +156,12 @@ public class MainActivity extends AppCompatActivity{
         adb.show();
     }
 
+    /**
+     *
+     * on click listener for "save" button, inserts values from user input into database table
+     *
+     * @param v
+     */
     public void onClkMaintInp(View v) {
         Spinner mainttype = findViewById(R.id.maintType);
         EditText price = findViewById(R.id.maintPrice);
@@ -151,6 +185,13 @@ public class MainActivity extends AppCompatActivity{
         }
     }
 
+    /**
+     *
+     * on click listener for "list" button, puts values from database table into string
+     * and creates alert dialog with those values
+     *
+     * @param v
+     */
     public void onClkMaintOut(View v) {
         Cursor cursor = db.getFromDB("Udrzba");
         if (cursor.getCount() == 0) {
@@ -174,6 +215,12 @@ public class MainActivity extends AppCompatActivity{
         adb.show();
     }
 
+    /**
+     *
+     * on click listener for "save" button, inserts values from user input into database table
+     *
+     * @param v
+     */
     public void onClkInspInp(View v) {
         Spinner insptype = findViewById(R.id.inspType);
         EditText price = findViewById(R.id.inspPrice);
@@ -201,6 +248,13 @@ public class MainActivity extends AppCompatActivity{
         }
     }
 
+    /**
+     *
+     * on click listener for "list" button, puts values from database table into string
+     * and creates alert dialog with those values
+     *
+     * @param v
+     */
     public void onClkInspOut(View v) {
         Cursor cursor = db.getFromDB("STK");
         if (cursor.getCount() == 0) {
@@ -224,6 +278,12 @@ public class MainActivity extends AppCompatActivity{
         adb.show();
     }
 
+    /**
+     *
+     * on click listener for "save" button, inserts values from user input into database table
+     *
+     * @param v
+     */
     public void onClkRepairInp(View v) {
         EditText repairtype = findViewById(R.id.repairType);
         EditText price = findViewById(R.id.repairPrice);
@@ -247,6 +307,13 @@ public class MainActivity extends AppCompatActivity{
         }
     }
 
+    /**
+     *
+     * on click listener for "list" button, puts values from database table into string
+     * and creates alert dialog with those values
+     *
+     * @param v
+     */
     public void onClkRepairOut(View v) {
         Cursor cursor = db.getFromDB("Opravy");
         if (cursor.getCount() == 0) {
@@ -270,6 +337,12 @@ public class MainActivity extends AppCompatActivity{
         adb.show();
     }
 
+    /**
+     *
+     * on click listener for "save" button, inserts values from user input into database table
+     *
+     * @param v
+     */
     public void onClkRideInp(View v) {
         EditText trip = findViewById(R.id.tripRoute);
         EditText odometerPrev = findViewById(R.id.tripOdoSt);
@@ -291,6 +364,13 @@ public class MainActivity extends AppCompatActivity{
         }
     }
 
+    /**
+     *
+     * on click listener for "list" button, puts values from database table into string
+     * and creates alert dialog with those values
+     *
+     * @param v
+     */
     public void onClkRideOut(View v) {
         Cursor cursor = db.getFromDB("Jazdy");
         if (cursor.getCount() == 0) {
@@ -313,6 +393,12 @@ public class MainActivity extends AppCompatActivity{
         adb.show();
     }
 
+    /**
+     *
+     * DBHelper instance getter
+     *
+     * @return instance of DBHelper
+     */
     public DBHelper getDBHelper() {
         return db;
     }

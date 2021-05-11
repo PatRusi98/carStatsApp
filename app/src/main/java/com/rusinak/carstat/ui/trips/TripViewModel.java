@@ -9,7 +9,7 @@ public class TripViewModel extends ViewModel {
 
     public TripViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is jazdy fragment");
+        mText.setValue("This is trips fragment");
     }
 
     public LiveData<String> getText() {

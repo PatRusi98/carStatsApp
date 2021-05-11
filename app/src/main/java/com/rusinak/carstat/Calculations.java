@@ -6,6 +6,9 @@ import android.database.Cursor;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+/**
+ * Calculation class, where all statistics are calculated
+ */
 public class Calculations {
 
     private static Context context;
@@ -14,11 +17,11 @@ public class Calculations {
      *
      * counts and returns average fuel consumption between last and penultimate refuelling
      *
-     * @param db
+     * @param db instance of DBHelper
      * @return returns current average fuel consumption in string
      */
     public String averageConsCur(DBHelper db) {
-        Cursor cursor = db.getFromDB("Tankovanie");
+        Cursor cursor = db.getFromDB("Refuelling");
         String output = null;
         if (cursor.getCount() <= 1) {
             output = "0.00";
@@ -39,11 +42,11 @@ public class Calculations {
      *
      * counts and returns average fuel consumption between last and first refuelling
      *
-     * @param db
+     * @param db instance of DBHelper
      * @return returns all-time average fuel consumption in string
      */
     public String averageConsAver(DBHelper db) {
-        Cursor cursor = db.getFromDB("Tankovanie");
+        Cursor cursor = db.getFromDB("Refuelling");
         String output = null;
         if (cursor.getCount() <= 1) {
             output = "0.00";
@@ -66,13 +69,13 @@ public class Calculations {
 
     /**
      *
-     * counts and returns price
+     * counts and returns price paid for 1 litre of fuel on last refuelling
      *
-     * @param db
-     * @return returns
+     * @param db instance of DBHelper
+     * @return returns price paid for 1 litre of fuel on last refuelling
      */
     public String costLitreCur(DBHelper db) {
-        Cursor cursor = db.getFromDB("Tankovanie");
+        Cursor cursor = db.getFromDB("Refuelling");
         String output = null;
         if (cursor.getCount() == 0) {
             output = "0.00";
@@ -87,8 +90,15 @@ public class Calculations {
         return output;
     }
 
+    /**
+     *
+     * counts and returns all-time average price paid for 1 litre of fuel
+     *
+     * @param db instance of DBHelper
+     * @return returns all-time average price paid for 1 litre of fuel
+     */
     public String costLitreAver(DBHelper db) {
-        Cursor cursor = db.getFromDB("Tankovanie");
+        Cursor cursor = db.getFromDB("Refuelling");
         String output = null;
         if (cursor.getCount() == 0) {
             output = "0.00";
@@ -108,8 +118,15 @@ public class Calculations {
         return output;
     }
 
+    /**
+     *
+     * counts and returns all-time total price paid for fuel
+     *
+     * @param db instance of DBHelper
+     * @return returns all-time total price paid for fuel
+     */
     public String totalRefuelCost(DBHelper db) {
-        Cursor cursor = db.getFromDB("Tankovanie");
+        Cursor cursor = db.getFromDB("Refuelling");
         String output = null;
         if (cursor.getCount() == 0) {
             output = "0.00";
@@ -126,8 +143,15 @@ public class Calculations {
         return output;
     }
 
+    /**
+     *
+     * counts and returns price paid for 1 kilometre between last and penultimate refuelling
+     *
+     * @param db instance of DBHelper
+     * @return returns price paid for 1 kilometre between last and penultimate refuelling
+     */
     public String pricePerKMLast(DBHelper db) {
-        Cursor cursor = db.getFromDB("Tankovanie");
+        Cursor cursor = db.getFromDB("Refuelling");
         String output = null;
         if (cursor.getCount() <= 1) {
             output = "0.00";
@@ -144,8 +168,15 @@ public class Calculations {
         return output;
     }
 
+    /**
+     *
+     * counts and returns all-time average price paid for 1 kilometre
+     *
+     * @param db instance of DBHelper
+     * @return returns all-time average price paid for 1 kilometre
+     */
     public String pricePerKMAver(DBHelper db) {
-        Cursor cursor = db.getFromDB("Tankovanie");
+        Cursor cursor = db.getFromDB("Refuelling");
         String output = null;
         if (cursor.getCount() <= 1) {
             output = "0.00";
@@ -165,8 +196,15 @@ public class Calculations {
         return output;
     }
 
+    /**
+     *
+     * returns date, when last refuel was made
+     *
+     * @param db instance of DBHelper
+     * @return returns string with date, when last refuel was made
+     */
     public String lastRefuel(DBHelper db) {
-        Cursor cursor = db.getFromDB("Tankovanie");
+        Cursor cursor = db.getFromDB("Refuelling");
         String output = null;
         if (cursor.getCount() == 0) {
             output = "Žiaden záznam";
@@ -177,8 +215,15 @@ public class Calculations {
         return output;
     }
 
+    /**
+     *
+     * counts and returns all-time total price paid for maintainance
+     *
+     * @param db instance of DBHelper
+     * @return returns all-time total price paid for maintainance
+     */
     public String totalMaintCost(DBHelper db) {
-        Cursor cursor = db.getFromDB("Udrzba");
+        Cursor cursor = db.getFromDB("Maintainance");
         String output = null;
         if (cursor.getCount() == 0) {
             output = "0.00";
@@ -195,8 +240,15 @@ public class Calculations {
         return output;
     }
 
+    /**
+     *
+     * returns date, when oil was changed
+     *
+     * @param db instance of DBHelper
+     * @return returns string with date, when oil was changed
+     */
     public String lastOil(DBHelper db) {
-        Cursor cursor = db.getFromDB("Udrzba");
+        Cursor cursor = db.getFromDB("Maintainance");
         String output = null;
         if (cursor.getCount() == 0) {
             output = "Žiaden záznam";
@@ -220,8 +272,15 @@ public class Calculations {
         return output;
     }
 
+    /**
+     *
+     * returns date, when last warranty inspection was done
+     *
+     * @param db instance of DBHelper
+     * @return returns string with date, when last warranty inspection was done
+     */
     public String lastWarranty(DBHelper db) {
-        Cursor cursor = db.getFromDB("Udrzba");
+        Cursor cursor = db.getFromDB("Maintainance");
         String output = null;
         if (cursor.getCount() == 0) {
             output = "Žiaden záznam";
@@ -241,8 +300,15 @@ public class Calculations {
         return output;
     }
 
+    /**
+     *
+     * returns date, when last technical inspection was done
+     *
+     * @param db instance of DBHelper
+     * @return returns string with date, when last technical inspection was done
+     */
     public String lastInspection(DBHelper db) {
-        Cursor cursor = db.getFromDB("STK");
+        Cursor cursor = db.getFromDB("Inspection");
         String output = null;
         if (cursor.getCount() == 0) {
             output = "Žiaden záznam";
@@ -266,8 +332,15 @@ public class Calculations {
         return output;
     }
 
+    /**
+     *
+     * returns date, when last emissions inspection was done
+     *
+     * @param db instance of DBHelper
+     * @return returns string with date, when last emissions inspection was done
+     */
     public String lastEmisInspection(DBHelper db) {
-        Cursor cursor = db.getFromDB("STK");
+        Cursor cursor = db.getFromDB("Maintainance");
         String output = null;
         if (cursor.getCount() == 0) {
             output = "Žiaden záznam";
@@ -291,8 +364,15 @@ public class Calculations {
         return output;
     }
 
+    /**
+     *
+     * returns date, when last originality inspection was done
+     *
+     * @param db instance of DBHelper
+     * @return returns string with date, when last originality inspection was done
+     */
     public String lastOrigControl(DBHelper db) {
-        Cursor cursor = db.getFromDB("STK");
+        Cursor cursor = db.getFromDB("Maintainance");
         String output = null;
         if (cursor.getCount() == 0) {
             output = "Žiaden záznam";
@@ -316,8 +396,15 @@ public class Calculations {
         return output;
     }
 
+    /**
+     *
+     * counts and returns all-time total price paid for inspection
+     *
+     * @param db instance of DBHelper
+     * @return returns all-time total price paid for inspection
+     */
     public String totalInspCost(DBHelper db) {
-        Cursor cursor = db.getFromDB("STK");
+        Cursor cursor = db.getFromDB("Maintainance");
         String output = null;
         if (cursor.getCount() == 0) {
             output = "0.00";
@@ -334,8 +421,15 @@ public class Calculations {
         return output;
     }
 
+    /**
+     *
+     * counts and returns all-time total price paid for repairs
+     *
+     * @param db instance of DBHelper
+     * @return returns all-time total price paid for repairs
+     */
     public String totalRepairCost(DBHelper db) {
-        Cursor cursor = db.getFromDB("Opravy");
+        Cursor cursor = db.getFromDB("Repairs");
         String output = null;
         if (cursor.getCount() == 0) {
             output = "0.00";
@@ -352,9 +446,15 @@ public class Calculations {
         return output;
     }
 
-
+    /**
+     *
+     * returns date, when last repair was done
+     *
+     * @param db instance of DBHelper
+     * @return returns string with date, when last repair was done
+     */
     public String lastRepair(DBHelper db) {
-        Cursor cursor = db.getFromDB("Opravy");
+        Cursor cursor = db.getFromDB("Repairs");
         String output = null;
         if (cursor.getCount() == 0) {
             output = "Žiaden záznam";
@@ -365,6 +465,13 @@ public class Calculations {
         return output;
     }
 
+    /**
+     *
+     * counts and returns all-time total price paid for car-related stuff
+     *
+     * @param db instance of DBHelper
+     * @return returns all-time total price paid for car-related stuff
+     */
     public String totalCostAll(DBHelper db) {
 
         Double fuel = Double.parseDouble(totalRefuelCost(db));
@@ -376,6 +483,13 @@ public class Calculations {
         return output;
     }
 
+    /**
+     *
+     * rounds double to 2 decimal place
+     *
+     * @param value double value to round
+     * @return returns double rounded to 2 decimal places
+     */
     public double round(Double value) {
         BigDecimal bd = BigDecimal.valueOf(value);
         bd = bd.setScale(2, RoundingMode.HALF_UP);

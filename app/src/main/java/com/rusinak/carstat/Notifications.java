@@ -10,6 +10,11 @@ import androidx.core.app.NotificationManagerCompat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ *
+ * Notifications class, builds notifications when conditions are met
+ *
+ */
 public class Notifications extends BroadcastReceiver {
 
 
@@ -36,6 +41,14 @@ public class Notifications extends BroadcastReceiver {
         }
     }
 
+    /**
+     *
+     * builds notifications
+     *
+     * @param context
+     * @param text text to be displayed in notification
+     * @param id notification id
+     */
     public void notification(Context context, String text, int id){
         NotificationCompat.Builder ncb = new NotificationCompat.Builder(context, "upozornenie")
                 .setSmallIcon(R.drawable.ic_menu_car)
@@ -49,12 +62,25 @@ public class Notifications extends BroadcastReceiver {
         nm.notify(id, ncb.build());
     }
 
+    /**
+     *
+     * method which returns current date
+     *
+     * @return string with date
+     */
     private String dateCur() {
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         return sdf.format(date).toString();
     }
 
+    /**
+     *
+     * method which calculates date, which was 23 months before current date
+     * for notification conditions
+     *
+     * @return string with calculated date (current date minus 23 months)
+     */
     private String dateCheck() {
         Date date = new Date();
         int day = 0;
