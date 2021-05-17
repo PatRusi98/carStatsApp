@@ -29,7 +29,8 @@
         android:hint="0.00"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/maintType" />
+        app:layout_constraintTop_toBottomOf="@+id/maintType"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/maintOdo"
@@ -40,7 +41,8 @@
         android:hint="0"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/maintPrice" />
+        app:layout_constraintTop_toBottomOf="@+id/maintPrice"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/maintDate"
@@ -51,7 +53,8 @@
         android:hint="DD.MM.YYYY"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/maintOdo" />
+        app:layout_constraintTop_toBottomOf="@+id/maintOdo"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/maintNotes"
@@ -62,7 +65,8 @@
         android:hint=""
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/maintDate" />
+        app:layout_constraintTop_toBottomOf="@+id/maintDate"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/maintService"
@@ -73,7 +77,8 @@
         android:hint="Názov Servisu"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/maintNotes" />
+        app:layout_constraintTop_toBottomOf="@+id/maintNotes"
+        android:importantForAutofill="no" />
 
         <TextView
             android:id="@+id/textView3"

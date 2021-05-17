@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity{
      * @param v
      */
     public void onClkRefuellingOut(View v) {
-        Cursor cur = db.getFromDB("Tankovanie");
+        Cursor cur = db.getFromDB("Refuelling");
         if (cur.getCount() == 0) {
             Toast.makeText(this, "Žiaden záznam", Toast.LENGTH_SHORT).show();
             return;
@@ -193,7 +193,7 @@ public class MainActivity extends AppCompatActivity{
      * @param v
      */
     public void onClkMaintOut(View v) {
-        Cursor cursor = db.getFromDB("Udrzba");
+        Cursor cursor = db.getFromDB("Maintainance");
         if (cursor.getCount() == 0) {
             Toast.makeText(this, "Žiaden záznam", Toast.LENGTH_SHORT).show();
             return;
@@ -256,7 +256,7 @@ public class MainActivity extends AppCompatActivity{
      * @param v
      */
     public void onClkInspOut(View v) {
-        Cursor cursor = db.getFromDB("STK");
+        Cursor cursor = db.getFromDB("Inspection");
         if (cursor.getCount() == 0) {
             Toast.makeText(this, "Žiaden záznam", Toast.LENGTH_SHORT).show();
             return;
@@ -315,7 +315,7 @@ public class MainActivity extends AppCompatActivity{
      * @param v
      */
     public void onClkRepairOut(View v) {
-        Cursor cursor = db.getFromDB("Opravy");
+        Cursor cursor = db.getFromDB("Repairs");
         if (cursor.getCount() == 0) {
             Toast.makeText(this, "Žiaden záznam", Toast.LENGTH_SHORT).show();
             return;
@@ -372,7 +372,7 @@ public class MainActivity extends AppCompatActivity{
      * @param v
      */
     public void onClkRideOut(View v) {
-        Cursor cursor = db.getFromDB("Jazdy");
+        Cursor cursor = db.getFromDB("Trips");
         if (cursor.getCount() == 0) {
             Toast.makeText(this, "Žiaden záznam", Toast.LENGTH_SHORT).show();
             return;

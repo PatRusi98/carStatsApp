@@ -29,7 +29,8 @@
         android:hint="0.00"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inspType" />
+        app:layout_constraintTop_toBottomOf="@+id/inspType"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/inspOdo"
@@ -40,7 +41,8 @@
         android:hint="0"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inspPrice" />
+        app:layout_constraintTop_toBottomOf="@+id/inspPrice"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/inspDate"
@@ -51,7 +53,8 @@
         android:hint="DD.MM.YYYY"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inspOdo" />
+        app:layout_constraintTop_toBottomOf="@+id/inspOdo"
+        android:importantForAutofill="no" />
 
     <CheckBox
         android:id="@+id/inspSuccess"
@@ -73,7 +76,8 @@
         android:hint="Názov Stanice"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inspSuccess" />
+        app:layout_constraintTop_toBottomOf="@+id/inspSuccess"
+        android:importantForAutofill="no" />
 
         <TextView
             android:id="@+id/textView3"

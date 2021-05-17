@@ -9,28 +9,30 @@
     android:layout_margin="8dp">
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:stretchColumns="1, 2"
         android:layout_margin="8dp">
 
     <TableRow>
         <TextView
             android:text="Tankovanie"
-            android:textSize="25dp"
+            android:textSize="25sp"
             android:textStyle="bold"
             android:padding="10dp"
             android:layout_gravity="left"
             android:layout_column="1"/>
         <TextView
             android:text=""
-            android:textSize="25dp"
+            android:textSize="25sp"
             android:textStyle="bold"
             android:padding="10dp"
             android:layout_gravity="center"
             android:layout_column="1"/>
     </TableRow>
 
-    <androidx.recyclerview.widget.RecyclerView
+        <!--androidx.recyclerview.widget.RecyclerView-->
+
+    <com.rusinak.carstat.ui.stats.StatsScrollDisabler
         android:id="@+id/statsRefuel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,21 +41,21 @@
     <TableRow>
         <TextView
             android:text="Údržba"
-            android:textSize="25dp"
+            android:textSize="25sp"
             android:textStyle="bold"
             android:padding="10dp"
             android:layout_gravity="left"
             android:layout_column="1"/>
         <TextView
             android:text=""
-            android:textSize="25dp"
+            android:textSize="25sp"
             android:textStyle="bold"
             android:padding="10dp"
             android:layout_gravity="center"
             android:layout_column="1"/>
     </TableRow>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <com.rusinak.carstat.ui.stats.StatsScrollDisabler
         android:id="@+id/statsMaint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -62,21 +64,21 @@
     <TableRow>
         <TextView
             android:text="STK"
-            android:textSize="25dp"
+            android:textSize="25sp"
             android:textStyle="bold"
             android:padding="10dp"
             android:layout_gravity="left"
             android:layout_column="1"/>
         <TextView
             android:text=""
-            android:textSize="25dp"
+            android:textSize="25sp"
             android:textStyle="bold"
             android:padding="10dp"
             android:layout_gravity="center"
             android:layout_column="1"/>
     </TableRow>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <com.rusinak.carstat.ui.stats.StatsScrollDisabler
         android:id="@+id/statsInsp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -85,21 +87,21 @@
     <TableRow>
         <TextView
             android:text="Opravy"
-            android:textSize="25dp"
+            android:textSize="25sp"
             android:textStyle="bold"
             android:padding="10dp"
             android:layout_gravity="left"
             android:layout_column="1"/>
         <TextView
             android:text=""
-            android:textSize="25dp"
+            android:textSize="25sp"
             android:textStyle="bold"
             android:padding="10dp"
             android:layout_gravity="center"
             android:layout_column="1"/>
     </TableRow>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <com.rusinak.carstat.ui.stats.StatsScrollDisabler
         android:id="@+id/statsRepair"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -108,21 +110,21 @@
     <TableRow>
         <TextView
             android:text="Všeobecné"
-            android:textSize="25dp"
+            android:textSize="25sp"
             android:textStyle="bold"
             android:padding="10dp"
             android:layout_gravity="left"
             android:layout_column="1"/>
         <TextView
             android:text=""
-            android:textSize="25dp"
+            android:textSize="25sp"
             android:textStyle="bold"
             android:padding="10dp"
             android:layout_gravity="center"
             android:layout_column="1"/>
     </TableRow>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <com.rusinak.carstat.ui.stats.StatsScrollDisabler
         android:id="@+id/statsAll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

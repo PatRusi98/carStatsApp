@@ -60,6 +60,7 @@ public class StatsFragment extends Fragment {
      */
     private void setRecyclerView(List<StatsModel> model) {
         recyclerView.setHasFixedSize(true);
+        recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         statsAdapter = new StatsAdapter(getContext(), model);
         recyclerView.setAdapter(statsAdapter);

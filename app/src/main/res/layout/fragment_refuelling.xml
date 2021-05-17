@@ -20,7 +20,8 @@
         android:hint="0.00"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/refuelPrice"
@@ -31,7 +32,8 @@
         android:hint="0.00"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/refuelLitres" />
+        app:layout_constraintTop_toBottomOf="@+id/refuelLitres"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/refuelOdo"
@@ -42,7 +44,8 @@
         android:hint="0"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/refuelPrice" />
+        app:layout_constraintTop_toBottomOf="@+id/refuelPrice"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/refuelDate"
@@ -54,7 +57,8 @@
         android:hint="DD.MM.YYYY"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/refuelOdo" />
+        app:layout_constraintTop_toBottomOf="@+id/refuelOdo"
+        android:importantForAutofill="no" />
 
     <Spinner
         android:id="@+id/refuelType"
@@ -74,7 +78,8 @@
         android:hint="Čerpacia stanica"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/refuelType" />
+        app:layout_constraintTop_toBottomOf="@+id/refuelType"
+        android:importantForAutofill="no" />
 
     <TextView
         android:id="@+id/textView3"
