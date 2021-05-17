@@ -32,7 +32,7 @@ public class Calculations {
         cursor.moveToPrevious();
         double odoPrev = Double.parseDouble(cursor.getString(2));
         double litres = Double.parseDouble(cursor.getString(0));
-        double result = litres * 100 / (odoAct - odoPrev);
+        double result = (litres * 100) / (odoAct - odoPrev);
         double res = round(result);
         output = String.valueOf(res);
         return output;
@@ -52,8 +52,6 @@ public class Calculations {
             output = "0.00";
             return output;
         }
-        cursor.moveToLast();
-        double odoAct = Double.parseDouble(cursor.getString(2));
         cursor.moveToFirst();
         double odoFirst = Double.parseDouble(cursor.getString(2));
         double litres = 00.00;
@@ -61,7 +59,10 @@ public class Calculations {
             litres += Double.parseDouble(cursor.getString(0));
             cursor.moveToNext();
         }
-        double result = litres * 100 / (odoAct - odoFirst);
+        cursor.moveToLast();
+        double odoAct = Double.parseDouble(cursor.getString(2));
+        litres -= Double.parseDouble(cursor.getString(0));
+        double result = (litres * 100) / (odoAct - odoFirst);
         double res = round(result);
         output = String.valueOf(res);
         return output;
@@ -107,9 +108,10 @@ public class Calculations {
         cursor.moveToFirst();
         double price = 00.00;
         double litres = 00.00;
+        cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             price += Double.parseDouble(cursor.getString(1));
-            litres =+ Double.parseDouble(cursor.getString(0));
+            litres += Double.parseDouble(cursor.getString(0));
             cursor.moveToNext();
         }
         double result = price / litres;
@@ -161,7 +163,7 @@ public class Calculations {
         double odoAct = Double.parseDouble(cursor.getString(2));
         cursor.moveToPrevious();
         double odoPrev = Double.parseDouble(cursor.getString(2));
-        double price = Double.parseDouble(cursor.getString(0));
+        double price = Double.parseDouble(cursor.getString(1));
         double result = price / (odoAct - odoPrev);
         double res = round(result);
         output = String.valueOf(res);
@@ -182,14 +184,16 @@ public class Calculations {
             output = "0.00";
             return output;
         }
-        cursor.moveToLast();
-        double odoAct = Double.parseDouble(cursor.getString(2));
         cursor.moveToFirst();
         double odoFirst = Double.parseDouble(cursor.getString(2));
-        double price = 00.00;
-        while (cursor.moveToNext()) {
+        double price = 0.00;
+        while (!cursor.isAfterLast()) {
             price += Double.parseDouble(cursor.getString(1));
+            cursor.moveToNext();
         }
+        cursor.moveToLast();
+        double odoAct = Double.parseDouble(cursor.getString(2));
+        price -= Double.parseDouble(cursor.getString(1));
         double result = price / (odoAct - odoFirst);
         double res = round(result);
         output = String.valueOf(res);
@@ -492,7 +496,7 @@ public class Calculations {
      */
     public double round(Double value) {
         BigDecimal bd = BigDecimal.valueOf(value);
-        bd = bd.setScale(2, RoundingMode.HALF_UP);
+        bd = bd.setScale(3, RoundingMode.HALF_UP);
         return bd.doubleValue();
     }
 }

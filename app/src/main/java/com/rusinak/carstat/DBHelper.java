@@ -14,10 +14,10 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class DBHelper extends SQLiteOpenHelper {
 
-    private static final String DB_FULL_PATH = "carstatDB.db";
+    private static final String DB_FULL_PATH = "carstatsDB.db";
 
     DBHelper(Context context) {
-        super(context, "carstatDB.db", null, 1);
+        super(context, "carstatsDB.db", null, 1);
     }
 
     @Override
