@@ -1,6 +1,7 @@
 package com.rusinak.carstat;
 
 
+import android.app.ActionBar;
 import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -10,15 +11,21 @@ import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.view.GravityCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -38,18 +45,17 @@ public class MainActivity extends AppCompatActivity{
 
     private AppBarConfiguration mAppBarConfiguration;
 
-    DBHelper db = new DBHelper(this);
+    DBHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        db = new DBHelper(this);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_refuel, R.id.nav_maint, R.id.nav_insp, R.id.nav_repairs, R.id.nav_trips, R.id.nav_stats, R.id.nav_settings)
                 .setDrawerLayout(drawer)
@@ -391,6 +397,59 @@ public class MainActivity extends AppCompatActivity{
         adb.setTitle("Jazdy");
         adb.setMessage(sb.toString());
         adb.show();
+    }
+
+    public void onClkTableDelete(View v)
+    {
+        db.deleteFromDB("Refuelling");
+        db.deleteFromDB("Maintainance");
+        db.deleteFromDB("Inspection");
+        db.deleteFromDB("Repairs");
+        db.deleteFromDB("Trips");
+        db.deleteFromDB("Settings");
+    }
+
+    public void onClkCarSet(View v)
+    {
+        db.deleteFromDB("Settings");
+        EditText brand = findViewById(R.id.carBrand);
+        EditText model = findViewById(R.id.carModel);
+        String sBrand = brand.getText().toString();
+        String sModel = model.getText().toString();
+        if (sBrand.isEmpty() || sModel.isEmpty()){
+            Toast.makeText(this, "Prázdne pole", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        boolean inserted = db.addSetting(sBrand, sModel);
+        if (inserted) {
+            Toast.makeText(MainActivity.this, "Údaje boli vložené", Toast.LENGTH_SHORT).show();
+        }
+
+        setHeader();
+    }
+
+    public void setHeader(){
+        NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
+        View headerView = navView.getHeaderView(0);
+
+        TextView carBrandModel = (TextView) findViewById(R.id.carModelBrand);
+
+        Cursor cur = db.getFromDB("Settings");
+        if (cur.getCount() == 0) {
+            carBrandModel.setText(" ");
+        } else {
+            cur.moveToLast();
+
+            String abrand = cur.getString(0);
+            String amodel = cur.getString(1);
+
+            carBrandModel.setText(abrand + " " + amodel);
+        }
+    }
+
+    public void onClkSetHeader(View v)
+    {
+        setHeader();
     }
 
     /**

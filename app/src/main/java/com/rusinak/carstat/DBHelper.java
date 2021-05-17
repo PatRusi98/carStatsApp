@@ -14,10 +14,10 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class DBHelper extends SQLiteOpenHelper {
 
-    private static final String DB_FULL_PATH = "carstatDatabase.db";
+    private static final String DB_FULL_PATH = "carstatDB.db";
 
     DBHelper(Context context) {
-        super(context, "carstatDatabase.db", null, 1);
+        super(context, "carstatDB.db", null, 1);
     }
 
     @Override
@@ -37,6 +37,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
             db.execSQL("create table Trips(cesta TEXT, tachometer1 TEXT, " +
                     "tachometer2 TEXT, date TEXT, poznamka TEXT)");
+
+            db.execSQL("create table Settings(znacka TEXT, model TEXT)");
         }
     }
 
@@ -188,6 +190,20 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    public boolean addSetting(String brand, String model)
+    {
+        SQLiteDatabase sqlDB = this.getWritableDatabase();
+        ContentValues cValues = new ContentValues();
+        cValues.put("znacka", brand);
+        cValues.put("model", model);
+        long result = sqlDB.insert("Settings", null, cValues);
+        if (result == -1) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     /**
      *
      * method which returns cursor to access data in database
@@ -215,5 +231,11 @@ public class DBHelper extends SQLiteOpenHelper {
         } catch (SQLException e) {}
 
         return  checkDB != null;
+    }
+
+    public void deleteFromDB(String tableName) {
+        //SQLiteDatabase db = this.getWritableDatabase();
+        //db.execSQL("delete from " + tableName);
+        //db.close();
     }
 }

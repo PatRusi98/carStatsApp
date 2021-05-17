@@ -4,11 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:onClick="onClkSetHeader"
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="onClkSetHeader"
         android:theme="@style/Theme.CarStat.AppBarOverlay">
 
         <androidx.appcompat.widget.Toolbar
@@ -16,6 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="#673AB7"
+            android:onClick="onClkSetHeader"
             app:popupTheme="@style/Theme.CarStat.PopupOverlay" />
 
     </com.google.android.material.appbar.AppBarLayout>
