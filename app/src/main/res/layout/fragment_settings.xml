@@ -16,17 +16,18 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="101dp"
             android:ems="10"
-            android:hint="napr. Ford"
+            android:hint="@string/hintBrand"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:importantForAutofill="no" />
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="112dp"
-            android:text="Značka"
+            android:text="@string/brand"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,17 +37,18 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:ems="10"
-            android:hint="napr. Focus ST170"
+            android:hint="@string/hintModel"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/carBrand" />
+            app:layout_constraintTop_toBottomOf="@+id/carBrand"
+            android:importantForAutofill="no" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="37dp"
-            android:text="Model"
+            android:text="@string/model"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
@@ -57,14 +59,14 @@
             android:layout_marginStart="160dp"
             android:layout_marginTop="50dp"
             android:layout_marginEnd="160dp"
-            android:text="Uložiť"
+            android:text="@string/save"
             android:onClick="onClkCarSet"
             app:iconTint="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/carModel" />
 
-        <Button
+        <!--<Button
             android:id="@+id/settingDeleteData"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -73,12 +75,12 @@
             android:layout_marginEnd="160dp"
             android:background="@color/red"
             android:onClick="onClkTableDelete"
-            android:text="Zmazať všetky dáta"
+            android:text="@string/deleteAll"
             app:iconTint="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/settingSave"
-            app:rippleColor="#FFFFFF" />
+            app:rippleColor="#FFFFFF" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

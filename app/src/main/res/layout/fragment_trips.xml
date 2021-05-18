@@ -21,7 +21,8 @@
             android:hint="@string/tripRoute"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:importantForAutofill="no" />
 
         <EditText
             android:id="@+id/tripOdoSt"
@@ -29,10 +30,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:ems="10"
-            android:hint="0"
+            android:hint="@string/hint0"
             android:inputType="numberDecimal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tripRoute" />
+            app:layout_constraintTop_toBottomOf="@+id/tripRoute"
+            android:importantForAutofill="no" />
 
         <EditText
             android:id="@+id/tripOdoFin"
@@ -40,10 +42,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:ems="10"
-            android:hint="0"
+            android:hint="@string/hint0"
             android:inputType="numberDecimal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tripOdoSt" />
+            app:layout_constraintTop_toBottomOf="@+id/tripOdoSt"
+            android:importantForAutofill="no" />
 
         <EditText
             android:id="@+id/tripDate"
@@ -51,10 +54,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:ems="10"
-            android:hint="DD.MM.YYYY"
+            android:hint="@string/hintdd_mm_yyyy"
             android:inputType="date"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tripOdoFin" />
+            app:layout_constraintTop_toBottomOf="@+id/tripOdoFin"
+            android:importantForAutofill="no" />
 
         <EditText
             android:id="@+id/tripNotes"
@@ -62,10 +66,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:ems="10"
-            android:hint=""
+            android:hint="@string/space"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tripDate" />
+            app:layout_constraintTop_toBottomOf="@+id/tripDate"
+            android:importantForAutofill="no" />
 
 
         <TextView
@@ -73,7 +78,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="112dp"
-            android:text="Trasa"
+            android:text="@string/route"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -82,7 +87,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="37dp"
-            android:text="Stav Tachometra na začiatku"
+            android:text="@string/odoStart"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
@@ -91,7 +96,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="37dp"
-            android:text="Stav Tachometra na konci"
+            android:text="@string/odoEnd"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -100,7 +105,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="37dp"
-            android:text="Dátum"
+            android:text="@string/date"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -109,7 +114,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="37dp"
-            android:text="Poznámky"
+            android:text="@string/notes"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -120,7 +125,7 @@
             android:layout_marginStart="160dp"
             android:layout_marginTop="50dp"
             android:layout_marginEnd="160dp"
-            android:text="Uložiť"
+            android:text="@string/save"
             android:onClick="onClkRideInp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -133,7 +138,7 @@
             android:layout_marginStart="160dp"
             android:layout_marginTop="50dp"
             android:layout_marginEnd="160dp"
-            android:text="Vypíš zoznam jázd"
+            android:text="@string/tripList"
             android:onClick="onClkRideOut"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
